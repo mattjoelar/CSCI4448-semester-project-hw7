@@ -1,6 +1,6 @@
 package org.example.Creatures
 
-enum class CreatureStatusEffect(val value: Int) {
+enum class ProjectmonStatus(val value: Int) {
     MISSINGNO(-1),
 
     EMPTY(0),

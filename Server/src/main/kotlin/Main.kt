@@ -1,9 +1,8 @@
 package org.example
 
 fun main() {
-    println("Hello World!")
-
-    val stringInput : String = readln()
-
-    println("Testing $stringInput\n")
+    val player1 = Player()
+    val player2 = Player()
+    val battle = Battle(player1, player2)
+    battle.runBattle()
 }

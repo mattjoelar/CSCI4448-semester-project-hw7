@@ -1,6 +1,6 @@
 package org.example.Creatures
 
-enum class CreatureItem(val value: Int) {
+enum class ProjectmonItem(val value: Int) {
     MISSINGNO(-1),
 
     NONE(0),

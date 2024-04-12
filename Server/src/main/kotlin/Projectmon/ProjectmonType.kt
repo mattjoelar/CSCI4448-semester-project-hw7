@@ -1,6 +1,6 @@
 package org.example.Creatures
 
-enum class CreatureType {
+enum class ProjectmonType {
     EMPTY,
 
     WATER,

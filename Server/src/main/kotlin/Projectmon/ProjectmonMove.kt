@@ -1,6 +1,6 @@
 package org.example.Creatures
 
-enum class CreatureMove(val value: Int) {
+enum class ProjectmonMove(val value: Int) {
     MISSINGNO(-1),
 
     EMPTY(0),
