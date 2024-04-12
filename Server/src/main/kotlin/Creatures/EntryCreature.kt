@@ -1,8 +1,8 @@
 package org.example.Creatures
 
-import org.example.CreatureData.CreatureMove
+import org.example.Creatures.CreatureMove
 
-data class CreatureEntry(
+data class EntryCreature(
     val name : String,
     val type1 : CreatureType,
     val type2 : CreatureType,

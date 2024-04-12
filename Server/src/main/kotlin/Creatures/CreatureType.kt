@@ -1,7 +1,7 @@
 package org.example.Creatures
 
 enum class CreatureType {
-    NONE,
+    EMPTY,
 
     WATER,
     FIRE,

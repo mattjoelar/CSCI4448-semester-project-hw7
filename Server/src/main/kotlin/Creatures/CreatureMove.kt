@@ -1,11 +1,12 @@
-package org.example.CreatureData
+package org.example.Creatures
 
-enum class CreatureMove() {
-    MISSINGNO,
+enum class CreatureMove(val value: Int) {
+    MISSINGNO(-1),
 
-    NONE,
-    TICKLE,
-    SCRATCH,
-    FLAMETHROWER,
-    FLYING_KNEE,
+    EMPTY(0),
+
+    TICKLE(1),
+    SCRATCH(2),
+    FLAMETHROWER(3),
+    FLYING_KNEE(4),
 }

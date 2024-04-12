@@ -1,6 +1,6 @@
 package org.example.Creatures
 
-data class MoveEntry(
+data class EntryMove(
     val name : String,
     val type : CreatureType,
     val pp : Int,

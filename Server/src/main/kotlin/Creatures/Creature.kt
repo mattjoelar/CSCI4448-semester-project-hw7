@@ -1,13 +1,13 @@
 package org.example.Creatures
 
-import org.example.CreatureData.CreatureMove
+import org.example.Creatures.CreatureMove
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.random.Random
 
-class Creature(data : CreatureInstanceData) {
-    private var baseData : CreatureInstanceData = data
-    private var currentData : CreatureInstanceData = data
+class Creature(data : CreatureData) {
+    private var baseData : CreatureData = data
+    private var currentData : CreatureData = data
 
     public var _health : Float
         get() {
@@ -26,10 +26,10 @@ class CreatureFactory {
     companion object {
         fun generateNewCreature(name : CreatureName, level : Int) : Creature {
             // Get entry from Entries for this creature
-            val entry : CreatureEntry = Entries.getCreature(name)
+            val entry : EntryCreature = Entries.getCreature(name)
 
             val clampedLevel : Int = level.coerceIn(1, 100)
-            val moves: Array<CreatureMove> = Array<CreatureMove>(4) { CreatureMove.NONE }
+            val moves: Array<CreatureMove> = Array<CreatureMove>(4) { CreatureMove.EMPTY }
             val pp: Array<Int> = Array<Int>(4) { 0 }
 
             // Generate moves for the creature from random moves it could have learned
@@ -51,7 +51,7 @@ class CreatureFactory {
             fun levelToStat(base : Float, growthMin : Float, growthMax : Float, level : Int) : Float {
                 return base + level * (growthMin + (growthMax - growthMin) * Random.nextFloat())
             }
-            val instanceData : CreatureInstanceData = CreatureInstanceData(
+            val instanceData : CreatureData = CreatureData(
                 name,
                 clampedLevel,
                 0,
