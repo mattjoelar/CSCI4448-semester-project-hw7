@@ -1,28 +1,19 @@
 package org.example
 
-import netscape.javascript.JSObject
-
-// This should return a JSON of player choice
-/* Examples:
-
-{
-    Choice: SwitchPokemon
-    Data: {
-            swapToIdx: 3
-    }
-}
-
-{
-    Choice: UseItem
-    Data: {
-            itemIdx: 3
-            pjmnIdx: 0
-    }
-}
- */
+// HOW DO WE PARSE JSON STRINGS????
 class ChoiceFactory {
-    // Generate a choice from user input or something
-    public fun createChoice() : JSObject {
-        throw Exception("Not yet implemented!")
+    // Possibly helpful: https://stackoverflow.com/questions/40244386/format-json-strings-intellij
+    public fun createSwitchProjectmonChoice(swapToIndex : Int) : Choice {
+        return Choice("{\n" +
+                "\"choice\" : \"switchPjmn\",\n" +
+                "\"pjmnIdx\" : \"${swapToIndex}\"\n" +
+                "}")
+    }
+
+    public fun createUseMoveChoice(moveIndex : Int) : Choice {
+        return Choice("{\n" +
+                "\"choice\" : \"useMove\",\n" +
+                "\"pjmnIdx\" : \"${moveIndex}\"\n" +
+                "}")
     }
 }
