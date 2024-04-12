@@ -1,6 +1,5 @@
 plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.9.22'
-    id "js" version "1.6.10"
 }
 
 group = 'org.example'
@@ -12,6 +11,7 @@ repositories {
 
 dependencies {
     testImplementation 'org.jetbrains.kotlin:kotlin-test'
+    implementation 'com.google.code.gson:gson:2.8.8'
 }
 
 test {
