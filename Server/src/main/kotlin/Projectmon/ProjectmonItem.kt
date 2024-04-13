@@ -3,7 +3,7 @@ package org.example.Creatures
 enum class ProjectmonItem(val value: Int) {
     MISSINGNO(-1),
 
-    NONE(0),
+    EMPTY(0),
 
     LEFTOVERS(1),
     GUN(2)
