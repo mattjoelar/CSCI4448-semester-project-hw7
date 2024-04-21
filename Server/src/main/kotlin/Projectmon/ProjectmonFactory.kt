@@ -23,12 +23,26 @@ class ProjectmonFactory {
                     validMoves.add(levelMovePair.second)
                 }
             }
-            for (i in 0..min(entry.learnableMoves.size - 1, 3)) {
+            var learnedMoves : Int = 0
+            while(validMoves.size > 0 && learnedMoves < 4) {
+                //println("on $name size is ${validMoves.size}")
+                //println("selected index is $number")
+                val number = Random.nextInt(validMoves.size)
+                val randomMove = validMoves[Random.nextInt(validMoves.size)]
+                moves[learnedMoves] = randomMove
+                pp[learnedMoves] = Entries.getMove(randomMove).pp
+
+                println("Setting $name's move $learnedMoves to $randomMove with ${pp[learnedMoves]} pp.")
+                validMoves.remove(randomMove)
+                learnedMoves++
+                //println("size is now ${validMoves.size}")
+            }
+            /*for (i in 0..min(entry.learnableMoves.size - 1, 3)) {
                 val randomMove = validMoves[Random.nextInt(validMoves.size)]
                 moves[i] = randomMove
                 pp[i] = Entries.getMove(randomMove).pp
                 validMoves.removeAt(i)
-            }
+            }*/
 
             // Create CreatureInstanceData for new creature
             fun levelToStat(base: Float, growthMin: Float, growthMax: Float, level: Int): Float {

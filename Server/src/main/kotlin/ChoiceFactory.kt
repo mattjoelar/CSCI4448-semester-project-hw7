@@ -13,7 +13,7 @@ object ChoiceFactory {
     public fun createUseMoveChoice(moveIndex : Int) : NetworkMessage {
         return NetworkMessage("{\n" +
                 "\"choice\" : \"useMove\",\n" +
-                "\"pjmnIdx\" : \"${moveIndex}\"\n" +
+                "\"moveIdx\" : \"${moveIndex}\"\n" +
                 "}")
     }
 }

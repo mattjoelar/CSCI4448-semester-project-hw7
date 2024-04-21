@@ -22,16 +22,19 @@ class Battle(private val player1 : Player, private val player2 : Player) {
             val playerChoice = getMessage(turn).asMap()
             var success : Boolean = false
 
+            println("{$playerChoice")
             when(playerChoice["choice"]) {
                 "useMove" -> {
-                    playerChoice["mvoveIdx"]?.let {
+                    println("I wanna use a move")
+                    playerChoice["moveIdx"]?.let {
                         data -> data.toString().toIntOrNull()?.let {
-                            idx -> if(idx in 0..3 && player.getActiveProjectmon().getPpOfMove(player.selectedProjectmonIdx) > 0) {
+                            idx -> if(idx in 0..3 && player.getActiveProjectmon().getPpOfMove(idx) > 0) {
                                 println("Using move!!!")
                                 // Use move here
                                 success = true
                             } else {
-                               println("Error: Something was wrong with player ${player}'s useMove request.")
+                                println("Error: ${player}'s useMove request used index $idx which has pp of ${player.getActiveProjectmon().getPpOfMove(idx)}.")
+
                             }
                         }
                     }
