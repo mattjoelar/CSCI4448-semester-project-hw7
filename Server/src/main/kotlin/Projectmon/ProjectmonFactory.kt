@@ -2,14 +2,13 @@ package org.example.Projectmon
 
 import Projectmon.EntryProjectmon
 import org.example.Creatures.*
-import kotlin.math.min
 import kotlin.random.Random
 
 class ProjectmonFactory {
     companion object {
         fun generateNewCreature(name: ProjectmonName, level: Int): Projectmon {
             // Get entry from Entries for this creature
-            val entry: EntryProjectmon = Entries.getCreature(name)
+            val entry: EntryProjectmon = Entries.lookupProjectmon(name)
 
             val clampedLevel: Int = level.coerceIn(1, 100)
             val moves: Array<ProjectmonMove> = Array<ProjectmonMove>(4) { ProjectmonMove.EMPTY }
@@ -30,7 +29,7 @@ class ProjectmonFactory {
                 val number = Random.nextInt(validMoves.size)
                 val randomMove = validMoves[Random.nextInt(validMoves.size)]
                 moves[learnedMoves] = randomMove
-                pp[learnedMoves] = Entries.getMove(randomMove).pp
+                pp[learnedMoves] = Entries.lookupMove(randomMove).pp
 
                 println("Setting $name's move $learnedMoves to $randomMove with ${pp[learnedMoves]} pp.")
                 validMoves.remove(randomMove)

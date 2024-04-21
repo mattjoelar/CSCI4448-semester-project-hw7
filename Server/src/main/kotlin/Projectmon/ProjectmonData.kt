@@ -17,7 +17,7 @@ data class ProjectmonData(
 ) {
 
     fun levelUp(newLevel : Int) {
-        var entry : EntryProjectmon = Entries.getCreature(name)
+        var entry : EntryProjectmon = Entries.lookupProjectmon(name)
         throw Exception("Not yet implemented!")
     }
 }

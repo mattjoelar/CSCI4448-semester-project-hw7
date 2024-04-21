@@ -3,7 +3,6 @@ package org.example.Creatures
 import Projectmon.EntryProjectmon
 import kotlin.math.max
 import kotlin.math.min
-import kotlin.random.Random
 
 class Projectmon {
     private lateinit var baseData : ProjectmonData
@@ -53,6 +52,20 @@ class Projectmon {
         return if(idx in 0..3) currentData.pp[idx] else 0
     }
 
+    public fun useMoveAgainst(moveIdx: Int, against: Projectmon) {
+        if(getPpOfMove(moveIdx) < 0) {
+            println("Error: Move has no PP, this should not have been called!")
+            return
+        }
+        val moveData = Entries.lookupMove(currentData.moves[moveIdx])
+        val againstProjectmon = Entries.lookupProjectmon(against.name)
+        val typeModifier = Entries.lookupEffectiveness(moveData.type, againstProjectmon.type1) * Entries.lookupEffectiveness(moveData.type, againstProjectmon.type2)
+        // https://bulbapedia.bulbagarden.net/wiki/Damage - Gen V Onward
+        val damage : Float = ((2 * (currentData.level / 5) * typeModifier * moveData.power * (currentData.attack / against.currentData.defense)) / 50) + 2
+
+        against.currentData.health -= damage
+    }
+
     // This needs to be updated to include evolutions!
     public fun levelUp(to : Int) {
         val levelsGained : Int = to - baseData.level
@@ -60,7 +73,7 @@ class Projectmon {
             return
         }
 
-        var entry : EntryProjectmon = Entries.getCreature(baseData.name)
+        var entry : EntryProjectmon = Entries.lookupProjectmon(baseData.name)
 
         // Check if this projectmon needs to evolve
         baseData.level = to

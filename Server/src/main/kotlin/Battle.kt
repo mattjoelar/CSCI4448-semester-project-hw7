@@ -25,7 +25,6 @@ class Battle(private val player1 : Player, private val player2 : Player) {
             println("{$playerChoice")
             when(playerChoice["choice"]) {
                 "useMove" -> {
-                    println("I wanna use a move")
                     playerChoice["moveIdx"]?.let {
                         data -> data.toString().toIntOrNull()?.let {
                             idx -> if(idx in 0..3 && player.getActiveProjectmon().getPpOfMove(idx) > 0) {
