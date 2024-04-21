@@ -1,6 +1,5 @@
 package org.example
 
-// HOW DO WE PARSE JSON STRINGS????
 object ChoiceFactory {
     // Possibly helpful: https://stackoverflow.com/questions/40244386/format-json-strings-intellij
     public fun createSwitchProjectmonChoice(swapToIndex : Int) : NetworkMessage {
@@ -15,5 +14,11 @@ object ChoiceFactory {
                 "\"choice\" : \"useMove\",\n" +
                 "\"moveIdx\" : \"${moveIndex}\"\n" +
                 "}")
+    }
+
+    public fun forfeit() : NetworkMessage {
+        return NetworkMessage("{\n" +
+            "\"choice\" : \"forfeit\",\n" +
+            "}")
     }
 }

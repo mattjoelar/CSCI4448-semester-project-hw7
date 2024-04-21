@@ -5,8 +5,9 @@ import kotlin.math.max
 import kotlin.math.min
 
 class Projectmon {
-    private lateinit var baseData : ProjectmonData
-    private lateinit var currentData : ProjectmonData
+    // These shouldn't be public, but it's too annoying to not do so
+    public lateinit var baseData : ProjectmonData
+    public lateinit var currentData : ProjectmonData
 
     constructor() {
         baseData = ProjectmonData()
@@ -47,6 +48,9 @@ class Projectmon {
         }
     public fun isDead(): Boolean {
         return health == 0f
+    }
+    public fun getMove(idx : Int) : ProjectmonMove {
+        return currentData.moves[idx]
     }
     public fun getPpOfMove(idx : Int) : Int {
         return if(idx in 0..3) currentData.pp[idx] else 0
