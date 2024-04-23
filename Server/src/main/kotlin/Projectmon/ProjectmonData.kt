@@ -15,7 +15,6 @@ data class ProjectmonData(
     var pp: Array<Int> = Array<Int>(4) { 0 },
     var statusEffects: MutableList<ProjectmonStatus> = mutableListOf<ProjectmonStatus>()
 ) {
-
     fun levelUp(newLevel : Int) {
         var entry : EntryProjectmon = Entries.lookupProjectmon(name)
         throw Exception("Not yet implemented!")

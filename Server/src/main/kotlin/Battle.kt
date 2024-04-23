@@ -2,6 +2,8 @@ package org.example
 
 import org.example.Creatures.Entries
 import org.example.Creatures.Projectmon
+import org.example.Creatures.ProjectmonData
+import org.example.Projectmon.GameStateUpdate
 
 class Battle(private val player1 : Player, private val player2 : Player) {
     private fun getPlayer(idx : Int) : Player {
@@ -12,7 +14,14 @@ class Battle(private val player1 : Player, private val player2 : Player) {
         println("Invalid input received!")
     }
 
-    fun runTurn(player1Message : NetworkMessage, player2Message : NetworkMessage) {
+
+    fun generateGameStateUpdateNetworkMessage(player1ProjectmonData : ProjectmonData, player2ProjectmonData : ProjectmonData) : NetworkMessage {
+        return NetworkMessage("LOGIC GOES HERE IDK")
+    }
+
+
+    // Run this as soon as both players send in a JSON choice
+    fun runTurn(player1Message : NetworkMessage, player2Message : NetworkMessage) : NetworkMessage {
         fun getMessage(idx : Int) : NetworkMessage {
             return if(idx == 0) player1Message else player2Message
         }
@@ -62,7 +71,7 @@ class Battle(private val player1 : Player, private val player2 : Player) {
                     for(projectmon in player.projectmons) {
                         projectmon.health = 0f
                     }
-                    return
+                    return generateGameStateUpdateNetworkMessage(player1.getActiveProjectmon().currentData, player2.getActiveProjectmon().currentData)
                 }
 
                 else -> {
@@ -74,5 +83,7 @@ class Battle(private val player1 : Player, private val player2 : Player) {
                 invalidInput(turn)
             }
         }
+
+        return generateGameStateUpdateNetworkMessage(player1.getActiveProjectmon().currentData, player2.getActiveProjectmon().currentData)
     }
 }
