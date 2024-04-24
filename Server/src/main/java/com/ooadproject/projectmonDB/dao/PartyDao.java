@@ -1,5 +1,7 @@
-package com.ooadproject.projectmonDB.model.party;
+package com.ooadproject.projectmonDB.dao;
 
+import com.ooadproject.projectmonDB.model.party.Party;
+import com.ooadproject.projectmonDB.repository.PartyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Service;
@@ -7,12 +9,13 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+// DAO - Data Access Object: abstracts and encapsulates all access to the datasource
 @Service
-public class DBDao {
+public class PartyDao {
     // Using Repository implements dependency injection
     @Autowired
-    private DBRepository repository;
-    public Party save(Party party) { return repository.save(party); }
+    private PartyRepository repository;
+    public Party saveParty(Party party) { return repository.save(party); }
 
 
     // Returns an Iterable by default
@@ -24,10 +27,10 @@ public class DBDao {
     }
 
     // Delete by creature
-    public void delete(Party party) { repository.delete(party); }
+    public void deleteParty(Party party) { repository.delete(party); }
 
     // To delete by ID
-    public void delete(int partyId){
+    public void deletePartyByID(int partyId){
         repository.deleteById(partyId);
     }
 }

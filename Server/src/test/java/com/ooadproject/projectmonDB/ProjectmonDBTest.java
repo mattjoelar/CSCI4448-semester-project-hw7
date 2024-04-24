@@ -1,7 +1,7 @@
 package com.ooadproject.projectmonDB;
 
 import com.ooadproject.projectmonDB.model.party.Creature;
-import com.ooadproject.projectmonDB.model.party.DBDao;
+import com.ooadproject.projectmonDB.dao.PartyDao;
 import com.ooadproject.projectmonDB.model.party.Party;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,13 +13,13 @@ import java.util.List;
 class ProjectmonDbTest {
 
     @Autowired
-    private DBDao dbDao;
+    private PartyDao partyDao;
 
-    //@Test
+    @Test
     void addCreatureTest() {
 
         Creature creature = new Creature();
-        creature.setName("Pog Champ");
+        creature.setIdentifier(1);
         creature.setLevel(1);
         creature.setXp(20);
         creature.setXpMax(100);
@@ -35,12 +35,12 @@ class ProjectmonDbTest {
         party.setPartyName("Mike");
         party.setMonID(monList);
 
-        dbDao.save(party);
+        partyDao.saveParty(party);
     }
 
-    @Test
+    //@Test
     void getAllParties() {
-        List<Party> parties = dbDao.getAllParties();
+        List<Party> parties = partyDao.getAllParties();
         System.out.println(parties);
         // assert creatures.size == 1;
     }
@@ -52,9 +52,9 @@ class ProjectmonDbTest {
 
     //@Test
     void deleteAllParties() {
-        List<Party> parties = dbDao.getAllParties();
+        List<Party> parties = partyDao.getAllParties();
         for(Party party : parties){
-            dbDao.delete(party);
+            partyDao.deleteParty(party);
         }
         // assert creatures.size == 0
     }

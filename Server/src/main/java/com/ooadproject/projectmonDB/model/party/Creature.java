@@ -12,35 +12,30 @@ public class Creature {
     private int id;
 
     @NotNull
-    private String name;
+    private int identifier;
 
-    @NotNull
     private int level;
 
-    @NotNull
     private int xp;
 
-    @NotNull
     private int xpMax;
 
-    @NotNull
-    private int hp;
+    private float hp;
 
-    @NotNull
-    private int attack;
+    private float attack;
 
-    @NotNull
-    private int defense;
+    private float defense;
 
-    @NotNull
-    private int speed;
+    private float speed;
 
-    @NotNull
     private int movesID;
 
+    @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "fk_party_id")
     private Party party;
+
+//-------------- Getters & Setters --------------//
 
     public int getId() {
         return id;
@@ -59,35 +54,35 @@ public class Creature {
         this.movesID = movesID;
     }
 
-    public int getSpeed() {
+    public float getSpeed() {
         return speed;
     }
 
-    public void setSpeed(int speed) {
+    public void setSpeed(float speed) {
         this.speed = speed;
     }
 
-    public int getDefense() {
+    public float getDefense() {
         return defense;
     }
 
-    public void setDefense(int defense) {
+    public void setDefense(float defense) {
         this.defense = defense;
     }
 
-    public int getAttack() {
+    public float getAttack() {
         return attack;
     }
 
-    public void setAttack(int attack) {
+    public void setAttack(float attack) {
         this.attack = attack;
     }
 
-    public int getHp() {
+    public float getHp() {
         return hp;
     }
 
-    public void setHp(int hp) {
+    public void setHp(float hp) {
         this.hp = hp;
     }
 
@@ -116,19 +111,31 @@ public class Creature {
     }
 
     @NotNull
-    public String getName() {
-        return name;
+    public Party getParty() {
+        return party;
     }
 
-    public void setName(@NotNull String name) {
-        this.name = name;
+    public void setParty(@NotNull Party party) {
+        this.party = party;
     }
+
+    @NotNull
+    public int getIdentifier() {
+        return identifier;
+    }
+
+    public void setIdentifier(@NotNull int identifier) {
+        this.identifier = identifier;
+    }
+
+//---------------- To String ----------------//
+
 
     @Override
     public String toString() {
         return "Creature{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", identifier=" + identifier +
                 ", level=" + level +
                 ", xp=" + xp +
                 ", xpMax=" + xpMax +
@@ -137,6 +144,7 @@ public class Creature {
                 ", defense=" + defense +
                 ", speed=" + speed +
                 ", movesID=" + movesID +
+                ", party=" + party +
                 '}';
     }
 }
