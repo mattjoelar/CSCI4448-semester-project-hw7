@@ -13,16 +13,17 @@ import java.util.List;
 @RestController
 public class CreatureController {
 
+    // Autowired - when run, finds and creates an instance of the class by inversion of control
     @Autowired
-    private CreatureDao CreatureDao;
+    private CreatureDao creatureDao;
 
     @GetMapping("/creature/get-all")
     public List<Creature> getAllCreatures() {
-        return CreatureDao.getAllCreatues();
+        return creatureDao.getAllCreatures();
     }
 
     @PostMapping("/creature/save")
     public Creature saveCreature(@RequestBody Creature creature) {
-        return CreatureDao.saveCreature(creature);
+        return creatureDao.saveCreature(creature);
     }
 }
