@@ -1,4 +1,4 @@
-package com.ooadproject.creaturefight.model.creature;
+package com.ooadproject.projectmonDB.model.party;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

@@ -3,7 +3,7 @@ package org.example.Creatures
 import Projectmon.EntryProjectmon
 
 data class ProjectmonData(
-    var name: ProjectmonName = ProjectmonName.EMPTY,
+    var identifier: ProjectmonIdentifier = ProjectmonIdentifier.EMPTY,
     var level: Int = 0,
     var xp: Int = 0,
     var xpMax: Int = 0,
@@ -17,7 +17,7 @@ data class ProjectmonData(
 ) {
 
     fun levelUp(newLevel : Int) {
-        var entry : EntryProjectmon = Entries.getCreature(name)
+        var entry : EntryProjectmon = Entries.getCreature(identifier)
         throw Exception("Not yet implemented!")
     }
 }

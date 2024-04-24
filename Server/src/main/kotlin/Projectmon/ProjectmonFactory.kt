@@ -7,9 +7,9 @@ import kotlin.random.Random
 
 class ProjectmonFactory {
     companion object {
-        fun generateNewCreature(name: ProjectmonName, level: Int): Projectmon {
+        fun generateNewProjectmon(id: ProjectmonIdentifier, level: Int): Projectmon {
             // Get entry from Entries for this creature
-            val entry: EntryProjectmon = Entries.getCreature(name)
+            val entry: EntryProjectmon = Entries.getCreature(id)
 
             val clampedLevel: Int = level.coerceIn(1, 100)
             val moves: Array<ProjectmonMove> = Array<ProjectmonMove>(4) { ProjectmonMove.EMPTY }
@@ -36,7 +36,7 @@ class ProjectmonFactory {
             }
 
             val instanceData: ProjectmonData = ProjectmonData(
-                name,
+                id,
                 clampedLevel,
                 0,
                 0,

@@ -4,8 +4,8 @@ import Projectmon.EntryProjectmon
 
 object Entries {
     // creatureEntries maps CreatureNames to CreatureEntries and contains the values for all creatures.
-    private val creatureEntries : Map<ProjectmonName, EntryProjectmon> = mapOf(
-        ProjectmonName.MISSINGNO to EntryProjectmon(
+    private val creatureEntries : Map<ProjectmonIdentifier, EntryProjectmon> = mapOf(
+        ProjectmonIdentifier.MISSINGNO to EntryProjectmon(
             "MissingNo",
             ProjectmonType.EMPTY,
             ProjectmonType.EMPTY,
@@ -20,10 +20,10 @@ object Entries {
             mapOf(
                 1 to ProjectmonMove.TICKLE
             ),
-            Pair(-1, ProjectmonName.MISSINGNO)
+            Pair(-1, ProjectmonIdentifier.MISSINGNO)
         ),
 
-        ProjectmonName.EMPTY to EntryProjectmon(
+        ProjectmonIdentifier.EMPTY to EntryProjectmon(
             "",
             ProjectmonType.EMPTY,
             ProjectmonType.EMPTY,
@@ -36,10 +36,10 @@ object Entries {
             0f,
             Pair(0f,0f),
             mapOf(),
-            Pair(-1, ProjectmonName.MISSINGNO)
+            Pair(-1, ProjectmonIdentifier.MISSINGNO)
         ),
 
-        ProjectmonName.PIKAMAN to EntryProjectmon(
+        ProjectmonIdentifier.PIKAMAN to EntryProjectmon(
             "Pikaman",
             ProjectmonType.ELECTRIC,
             ProjectmonType.FERAL,
@@ -57,7 +57,7 @@ object Entries {
                 10 to ProjectmonMove.FLAMETHROWER,
                 15 to ProjectmonMove.FLYING_KNEE
             ),
-            Pair(-1, ProjectmonName.MISSINGNO)
+            Pair(-1, ProjectmonIdentifier.MISSINGNO)
         )
     )
 
@@ -77,9 +77,9 @@ object Entries {
     )
 
     // Returns a valid projectmon if id exists, otherwise returns MissingNo
-    public fun getCreature(value: ProjectmonName) : EntryProjectmon {
+    public fun getCreature(value: ProjectmonIdentifier) : EntryProjectmon {
         val entry : EntryProjectmon? = creatureEntries[value]
-        return if (entry == null) creatureEntries[ProjectmonName.MISSINGNO] as EntryProjectmon else entry as EntryProjectmon
+        return if (entry == null) creatureEntries[ProjectmonIdentifier.MISSINGNO] as EntryProjectmon else entry as EntryProjectmon
     }
 
     // Returns a valid move if id exists, otherwise returns MissingNo

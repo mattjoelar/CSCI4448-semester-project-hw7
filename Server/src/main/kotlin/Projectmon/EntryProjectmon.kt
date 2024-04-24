@@ -1,7 +1,7 @@
 package Projectmon
 
 import org.example.Creatures.ProjectmonMove
-import org.example.Creatures.ProjectmonName
+import org.example.Creatures.ProjectmonIdentifier
 import org.example.Creatures.ProjectmonType
 import kotlin.math.pow
 import kotlin.random.Random
@@ -19,7 +19,7 @@ data class EntryProjectmon(
     val baseSpeed : Float,
     val speedGrowth : Pair<Float, Float>,
     val learnableMoves : Map<Int, ProjectmonMove>,
-    val evolvesAtLevelInto : Pair<Int, ProjectmonName>
+    val evolvesAtLevelInto : Pair<Int, ProjectmonIdentifier>
 ) {
     private fun generateStatIncrease(growth : Pair<Float, Float>, levels : Int) : Float {
         return levels * (growth.first + (growth.second - growth.first) * Random.nextFloat())

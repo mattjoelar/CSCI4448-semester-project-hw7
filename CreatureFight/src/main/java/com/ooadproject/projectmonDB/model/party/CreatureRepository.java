@@ -1,4 +1,4 @@
-package com.ooadproject.creaturefight.model.creature;
+package com.ooadproject.projectmonDB.model.party;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
