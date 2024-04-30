@@ -19,7 +19,7 @@ class Projectmon {
     }
 
     // Data accessors
-    public val name : ProjectmonName
+    public val name : ProjectmonIdentifier
         get() {
             return currentData.name
         }

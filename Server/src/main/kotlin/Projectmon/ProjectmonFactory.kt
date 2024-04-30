@@ -6,7 +6,7 @@ import kotlin.random.Random
 
 class ProjectmonFactory {
     companion object {
-        fun generateNewCreature(name: ProjectmonName, level: Int): Projectmon {
+        fun generateNewProjectmon(name: ProjectmonIdentifier, level: Int): Projectmon {
             // Get entry from Entries for this creature
             val entry: EntryProjectmon = Entries.lookupProjectmon(name)
 

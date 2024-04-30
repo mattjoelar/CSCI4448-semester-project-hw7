@@ -3,7 +3,7 @@ package org.example.Creatures
 import Projectmon.EntryProjectmon
 
 data class ProjectmonData(
-    var name: ProjectmonName = ProjectmonName.EMPTY,
+    var name: ProjectmonIdentifier = ProjectmonIdentifier.EMPTY,
     var level: Int = 0,
     var xp: Int = 0,
     var xpMax: Int = 0,
