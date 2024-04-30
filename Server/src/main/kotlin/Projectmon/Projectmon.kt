@@ -5,8 +5,9 @@ import kotlin.math.max
 import kotlin.math.min
 
 class Projectmon {
-    private lateinit var baseData : ProjectmonData
-    private lateinit var currentData : ProjectmonData
+    // These shouldn't be public, but it's too annoying to not do so
+    public lateinit var baseData : ProjectmonData
+    public lateinit var currentData : ProjectmonData
 
     constructor() {
         baseData = ProjectmonData()
@@ -18,9 +19,9 @@ class Projectmon {
     }
 
     // Data accessors
-    public val name : ProjectmonIdentifier
+    public val name : ProjectmonName
         get() {
-            return currentData.identifier
+            return currentData.name
         }
     public var health : Float
         get() {
@@ -48,8 +49,25 @@ class Projectmon {
     public fun isDead(): Boolean {
         return health == 0f
     }
+    public fun getMove(idx : Int) : ProjectmonMove {
+        return currentData.moves[idx]
+    }
     public fun getPpOfMove(idx : Int) : Int {
         return if(idx in 0..3) currentData.pp[idx] else 0
+    }
+
+    public fun useMoveAgainst(moveIdx: Int, against: Projectmon) {
+        if(getPpOfMove(moveIdx) < 0) {
+            println("Error: Move has no PP, this should not have been called!")
+            return
+        }
+        val moveData = Entries.lookupMove(currentData.moves[moveIdx])
+        val againstProjectmon = Entries.lookupProjectmon(against.name)
+        val typeModifier = Entries.lookupEffectiveness(moveData.type, againstProjectmon.type1) * Entries.lookupEffectiveness(moveData.type, againstProjectmon.type2)
+        // https://bulbapedia.bulbagarden.net/wiki/Damage - Gen V Onward
+        val damage : Float = ((2 * (currentData.level / 5) * typeModifier * moveData.power * (currentData.attack / against.currentData.defense)) / 50) + 2
+
+        against.currentData.health -= damage
     }
 
     // This needs to be updated to include evolutions!
@@ -59,12 +77,12 @@ class Projectmon {
             return
         }
 
-        var entry : EntryProjectmon = Entries.getCreature(baseData.identifier)
+        var entry : EntryProjectmon = Entries.lookupProjectmon(baseData.name)
 
         // Check if this projectmon needs to evolve
         baseData.level = to
         if(entry.evolvesAtLevelInto.first > 0 && entry.evolvesAtLevelInto.first <= baseData.level) {
-            baseData.identifier = entry.evolvesAtLevelInto.second
+            baseData.name = entry.evolvesAtLevelInto.second
         }
 
         // Keep track of current stats to update later

@@ -2,14 +2,13 @@ package org.example.Projectmon
 
 import Projectmon.EntryProjectmon
 import org.example.Creatures.*
-import kotlin.math.min
 import kotlin.random.Random
 
 class ProjectmonFactory {
     companion object {
-        fun generateNewProjectmon(id: ProjectmonIdentifier, level: Int): Projectmon {
+        fun generateNewCreature(name: ProjectmonName, level: Int): Projectmon {
             // Get entry from Entries for this creature
-            val entry: EntryProjectmon = Entries.getCreature(id)
+            val entry: EntryProjectmon = Entries.lookupProjectmon(name)
 
             val clampedLevel: Int = level.coerceIn(1, 100)
             val moves: Array<ProjectmonMove> = Array<ProjectmonMove>(4) { ProjectmonMove.EMPTY }
@@ -23,12 +22,26 @@ class ProjectmonFactory {
                     validMoves.add(levelMovePair.second)
                 }
             }
-            for (i in 0..min(entry.learnableMoves.size - 1, 3)) {
+            var learnedMoves : Int = 0
+            while(validMoves.size > 0 && learnedMoves < 4) {
+                //println("on $name size is ${validMoves.size}")
+                //println("selected index is $number")
+                val number = Random.nextInt(validMoves.size)
+                val randomMove = validMoves[Random.nextInt(validMoves.size)]
+                moves[learnedMoves] = randomMove
+                pp[learnedMoves] = Entries.lookupMove(randomMove).pp
+
+                println("Setting $name's move $learnedMoves to $randomMove with ${pp[learnedMoves]} pp.")
+                validMoves.remove(randomMove)
+                learnedMoves++
+                //println("size is now ${validMoves.size}")
+            }
+            /*for (i in 0..min(entry.learnableMoves.size - 1, 3)) {
                 val randomMove = validMoves[Random.nextInt(validMoves.size)]
                 moves[i] = randomMove
                 pp[i] = Entries.getMove(randomMove).pp
                 validMoves.removeAt(i)
-            }
+            }*/
 
             // Create CreatureInstanceData for new creature
             fun levelToStat(base: Float, growthMin: Float, growthMax: Float, level: Int): Float {
@@ -36,7 +49,7 @@ class ProjectmonFactory {
             }
 
             val instanceData: ProjectmonData = ProjectmonData(
-                id,
+                name,
                 clampedLevel,
                 0,
                 0,

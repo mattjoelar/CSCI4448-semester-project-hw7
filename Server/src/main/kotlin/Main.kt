@@ -19,7 +19,7 @@ fun main() {
 
     val battle = Battle(player1, player2)
 
-    println("Starting \"battle\"!\n")
+    println("Starting battle!\n======")
     battle.runTurn(ChoiceFactory.createUseMoveChoice(0), ChoiceFactory.createUseMoveChoice(0))
-    println("Ending \"battle\"!\n")
+    println("=====\nEnding battle!")
 }

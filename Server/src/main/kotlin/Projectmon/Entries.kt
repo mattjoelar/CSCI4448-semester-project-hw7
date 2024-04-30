@@ -4,8 +4,8 @@ import Projectmon.EntryProjectmon
 
 object Entries {
     // creatureEntries maps CreatureNames to CreatureEntries and contains the values for all creatures.
-    private val creatureEntries : Map<ProjectmonIdentifier, EntryProjectmon> = mapOf(
-        ProjectmonIdentifier.MISSINGNO to EntryProjectmon(
+    private val creatureEntries : Map<ProjectmonName, EntryProjectmon> = mapOf(
+        ProjectmonName.MISSINGNO to EntryProjectmon(
             "MissingNo",
             ProjectmonType.EMPTY,
             ProjectmonType.EMPTY,
@@ -20,10 +20,10 @@ object Entries {
             mapOf(
                 1 to ProjectmonMove.TICKLE
             ),
-            Pair(-1, ProjectmonIdentifier.MISSINGNO)
+            Pair(-1, ProjectmonName.MISSINGNO)
         ),
 
-        ProjectmonIdentifier.EMPTY to EntryProjectmon(
+        ProjectmonName.EMPTY to EntryProjectmon(
             "",
             ProjectmonType.EMPTY,
             ProjectmonType.EMPTY,
@@ -36,10 +36,10 @@ object Entries {
             0f,
             Pair(0f,0f),
             mapOf(),
-            Pair(-1, ProjectmonIdentifier.MISSINGNO)
+            Pair(-1, ProjectmonName.MISSINGNO)
         ),
 
-        ProjectmonIdentifier.PIKAMAN to EntryProjectmon(
+        ProjectmonName.PIKAMAN to EntryProjectmon(
             "Pikaman",
             ProjectmonType.ELECTRIC,
             ProjectmonType.FERAL,
@@ -57,34 +57,150 @@ object Entries {
                 10 to ProjectmonMove.FLAMETHROWER,
                 15 to ProjectmonMove.FLYING_KNEE
             ),
-            Pair(-1, ProjectmonIdentifier.MISSINGNO)
+            Pair(-1, ProjectmonName.MISSINGNO)
         )
     )
 
     private val moveEntries : Map<ProjectmonMove, EntryMove> = mapOf(
-        ProjectmonMove.MISSINGNO to EntryMove(
-            "MissingNo",
-            ProjectmonType.EMPTY,
-            0,
-            0
+        ProjectmonMove.MISSINGNO to EntryMove("MissingNo",
+            ProjectmonType.EMPTY, 0, 0
         ),
-        ProjectmonMove.EMPTY to EntryMove(
-            "",
-            ProjectmonType.EMPTY,
-            0,
-            0
-        )
+        ProjectmonMove.EMPTY to EntryMove("",
+            ProjectmonType.EMPTY, 0, 0
+        ),
+        ProjectmonMove.TICKLE to EntryMove("Tickle",
+            ProjectmonType.FERAL, 25, 1
+        ),
+        ProjectmonMove.SCRATCH to EntryMove("Scratch",
+            ProjectmonType.FERAL, 20, 5
+        ),
+        ProjectmonMove.FLAMETHROWER to EntryMove("Flamethrower",
+            ProjectmonType.FIRE, 20, 15
+        ),
+        ProjectmonMove.FLYING_KNEE to EntryMove("Flying Knee",
+            ProjectmonType.LIGHT, 1, 55
+        ),
     )
 
     // Returns a valid projectmon if id exists, otherwise returns MissingNo
-    public fun getCreature(value: ProjectmonIdentifier) : EntryProjectmon {
+    public fun lookupProjectmon(value: ProjectmonName) : EntryProjectmon {
         val entry : EntryProjectmon? = creatureEntries[value]
-        return if (entry == null) creatureEntries[ProjectmonIdentifier.MISSINGNO] as EntryProjectmon else entry as EntryProjectmon
+        return if (entry == null) creatureEntries[ProjectmonName.MISSINGNO] as EntryProjectmon else entry as EntryProjectmon
     }
 
     // Returns a valid move if id exists, otherwise returns MissingNo
-    public fun getMove(value: ProjectmonMove) : EntryMove {
+    public fun lookupMove(value: ProjectmonMove) : EntryMove {
         val entry : EntryMove? = moveEntries[value]
         return if (entry == null) moveEntries[ProjectmonMove.MISSINGNO] as EntryMove else entry as EntryMove
+    }
+
+    public fun lookupEffectiveness(from : ProjectmonType, against : ProjectmonType) : Float {
+        return when(from) {
+            ProjectmonType.MISSINGNO -> 1f
+            ProjectmonType.EMPTY -> 1f
+            ProjectmonType.LIGHT -> {
+                when(against) {
+                    ProjectmonType.DARK -> 2f
+                    ProjectmonType.PLANT -> -1f
+                    else -> 1f
+                }
+            }
+            ProjectmonType.AIR -> {
+                when(against) {
+                    ProjectmonType.FIRE -> 2f
+                    else -> 1f
+                }
+            }
+            ProjectmonType.DARK -> {
+                when(against) {
+                    ProjectmonType.FIRE -> 0.5f
+                    ProjectmonType.PLANT -> 2f
+                    else -> 1f
+                }
+            }
+            ProjectmonType.PLANT -> {
+                when(against) {
+                    ProjectmonType.WATER -> 2f
+                    ProjectmonType.FERAL -> 0.5f
+                    ProjectmonType.EARTH -> 2f
+                    else -> 1f
+                }
+            }
+            ProjectmonType.FERAL -> {
+                when(against) {
+                    ProjectmonType.FERAL -> 2f
+                    ProjectmonType.PLANT -> 2f
+                    ProjectmonType.DARK -> 0.5f
+                    ProjectmonType.TECH -> 0.5f
+                    ProjectmonType.MAGIC -> 2f
+                    else -> 1f
+                }
+            }
+            ProjectmonType.TECH -> {
+                when(against) {
+                    ProjectmonType.FERAL -> 2f
+                    else -> 1f
+                }
+            }
+            ProjectmonType.MAGIC -> {
+                when(against) {
+                    ProjectmonType.TECH -> 0.5f
+                    ProjectmonType.MAGIC -> 0.5f
+                    // They control the basic elements I guess
+                    ProjectmonType.FIRE -> 2f
+                    ProjectmonType.ICE -> 2f
+                    else -> 1f
+                }
+            }
+            ProjectmonType.FIRE -> {
+                when(against) {
+                    ProjectmonType.PLANT -> 2f
+                    ProjectmonType.CRINGE -> 2f
+                    else -> 1f
+                }
+            }
+            ProjectmonType.EARTH -> {
+                when(against) {
+                    ProjectmonType.FIRE -> 2f
+                    ProjectmonType.ELECTRIC -> 0f
+                    else -> 1f
+                }
+            }
+            ProjectmonType.ICE -> {
+                when(against) {
+                    ProjectmonType.PLANT -> 2f
+                    ProjectmonType.WATER -> 2f
+                    else -> 1f
+                }
+            }
+            ProjectmonType.WATER -> {
+                when(against) {
+                    ProjectmonType.FIRE -> 2f
+                    ProjectmonType.TECH -> 2f
+                    ProjectmonType.EARTH -> 2f
+                    else -> 1f
+                }
+            }
+            ProjectmonType.CRINGE -> {
+                when(against) {
+                    ProjectmonType.DARK -> 2f
+                    ProjectmonType.FERAL -> 0.5f
+                    ProjectmonType.LIGHT -> 0.5f
+                    else -> 1f
+                }
+            }
+            ProjectmonType.ELECTRIC -> {
+                when(against) {
+                    ProjectmonType.TECH -> 2f
+                    ProjectmonType.WATER -> 2f
+                    ProjectmonType.FERAL -> 2f
+                    ProjectmonType.EARTH -> 0f
+                    ProjectmonType.AIR -> 0f
+                    ProjectmonType.LIGHT -> 0.5f
+                    else -> 1f
+                }
+            }
+            else -> 1f
+        }
     }
 }
