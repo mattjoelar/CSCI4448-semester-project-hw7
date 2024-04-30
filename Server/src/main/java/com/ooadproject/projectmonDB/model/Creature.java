@@ -1,5 +1,7 @@
-package com.ooadproject.projectmonDB.model.party;
+package com.ooadproject.projectmonDB.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import org.jetbrains.annotations.NotNull;
 
@@ -11,28 +13,38 @@ public class Creature {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @NotNull
+
+    @Column(name = "identifier", nullable = false)
     private int identifier;
 
+    @Column(name = "level", nullable = false)
     private int level;
 
+    @Column(name = "xp", nullable = false)
     private int xp;
 
-    private int xpMax;
+    @Column(name = "xp_max", nullable = false)
+    private int xp_max;
 
+    @Column(name = "hp", nullable = false)
     private float hp;
 
+    @Column(name = "attack", nullable = false)
     private float attack;
 
+    @Column(name = "defense", nullable = false)
     private float defense;
 
+    @Column(name = "speed", nullable = false)
     private float speed;
 
-    private int movesID;
+    @Column(name = "moves", nullable = false)
+    private int moves;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "fk_party_id")
+    @JsonBackReference
     private Party party;
 
 //-------------- Getters & Setters --------------//
@@ -46,12 +58,12 @@ public class Creature {
     }
 
 
-    public int getMovesID() {
-        return movesID;
+    public int getMoves() {
+        return moves;
     }
 
-    public void setMovesID(int movesID) {
-        this.movesID = movesID;
+    public void setMoves(int movesID) {
+        this.moves = movesID;
     }
 
     public float getSpeed() {
@@ -86,12 +98,12 @@ public class Creature {
         this.hp = hp;
     }
 
-    public int getXpMax() {
-        return xpMax;
+    public int getXp_max() {
+        return xp_max;
     }
 
-    public void setXpMax(int pxMax) {
-        this.xpMax = pxMax;
+    public void setXp_max(int pxMax) {
+        this.xp_max = pxMax;
     }
 
     public int getXp() {
@@ -119,12 +131,12 @@ public class Creature {
         this.party = party;
     }
 
-    @NotNull
+
     public int getIdentifier() {
         return identifier;
     }
 
-    public void setIdentifier(@NotNull int identifier) {
+    public void setIdentifier( int identifier) {
         this.identifier = identifier;
     }
 
@@ -138,12 +150,12 @@ public class Creature {
                 ", identifier=" + identifier +
                 ", level=" + level +
                 ", xp=" + xp +
-                ", xpMax=" + xpMax +
+                ", xpMax=" + xp_max +
                 ", hp=" + hp +
                 ", attack=" + attack +
                 ", defense=" + defense +
                 ", speed=" + speed +
-                ", movesID=" + movesID +
+                ", movesID=" + moves +
                 ", party=" + party +
                 '}';
     }

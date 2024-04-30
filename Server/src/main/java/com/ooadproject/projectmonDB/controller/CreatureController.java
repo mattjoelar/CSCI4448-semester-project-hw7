@@ -1,12 +1,9 @@
 package com.ooadproject.projectmonDB.controller;
 
 import com.ooadproject.projectmonDB.dao.CreatureDao;
-import com.ooadproject.projectmonDB.model.party.Creature;
+import com.ooadproject.projectmonDB.model.Creature;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,6 +18,11 @@ public class CreatureController {
     public List<Creature> getAllCreatures() {
         return creatureDao.getAllCreatures();
     }
+
+//    @GetMapping("/creature/get-by-party-id/{id}")
+//    public List<Creature> getByPartyId(@PathVariable int id) {
+//        return creatureDao.getCreatureByPartyId(id);
+//    }
 
     @PostMapping("/creature/save")
     public Creature saveCreature(@RequestBody Creature creature) {

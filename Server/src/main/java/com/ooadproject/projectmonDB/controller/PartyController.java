@@ -1,12 +1,9 @@
 package com.ooadproject.projectmonDB.controller;
 
 import com.ooadproject.projectmonDB.dao.PartyDao;
-import com.ooadproject.projectmonDB.model.party.Party;
+import com.ooadproject.projectmonDB.model.Party;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,17 +12,22 @@ import java.util.List;
 public class PartyController {
 
     @Autowired
-    private PartyDao PartyDao;
+    private PartyDao partyDao;
 
     //Gets all creatures from DB server
     @GetMapping("/party/get-all")
     public List<Party> getAllParties() {
-        return PartyDao.getAllParties();
+        return partyDao.getAllParties();
+    }
+
+    @GetMapping("/party/get-party/{id}")
+    public Party getPartyById(@PathVariable int id) {
+        return partyDao.getPartyById(id);
     }
 
     //Posts to DB server
     @PostMapping("/party/save")
-    public Party save(@RequestBody Party party) {
-        return PartyDao.saveParty(party);
+    public Party saveParty(@RequestBody Party party) {
+        return partyDao.saveParty(party);
     }
 }
