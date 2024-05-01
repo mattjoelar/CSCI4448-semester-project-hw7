@@ -21,7 +21,7 @@ public class MatchController {
 
     @GetMapping("/match/find")
     public String findMatch(@RequestBody NetworkMessage message) throws ExecutionException, InterruptedException {
-        return matchDao.findMatch(message);
+        return matchDao.findMatch(message).get();
     }
 
 

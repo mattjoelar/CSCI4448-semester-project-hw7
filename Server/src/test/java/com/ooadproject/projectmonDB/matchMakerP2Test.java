@@ -22,7 +22,10 @@ public class matchMakerP2Test {
 
         CompletableFuture<String> p2 = matchDao.findMatch(message2);
 
-        CompletableFuture.allOf(p1,p2).join();
+        //waits for both players
+        CompletableFuture.allOf(p1, p2).join();
+
+        assert ((Objects.equals(p1.get(), p2.get())));
 
     }
 }
