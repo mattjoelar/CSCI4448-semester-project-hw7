@@ -55,9 +55,15 @@ public class PartyDao {
         }
     }
 
+    public Party getPartyByName(String name){
+        return repository.findByName(name);
+    }
 
 
-    public Party getPartyById(int id) { return repository.findById(id).orElse(null); }
+
+    public Party getPartyById(int id) {
+        return repository.findById(id).orElse(null);
+    }
 
     // Delete by creature
     public void deleteParty(Party party) { repository.delete(party); }

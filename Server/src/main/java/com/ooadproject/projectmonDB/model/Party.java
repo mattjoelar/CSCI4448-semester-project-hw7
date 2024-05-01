@@ -1,7 +1,5 @@
 package com.ooadproject.projectmonDB.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import org.jetbrains.annotations.NotNull;
@@ -18,7 +16,7 @@ public class Party {
 
     @NotNull
     @Column(name="party_name")
-    private String party_name;
+    private String name;
 
     @NotNull
     @OneToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY , orphanRemoval = true)
@@ -39,12 +37,12 @@ public class Party {
     }
 
     @NotNull
-    public String getParty_name() {
-        return party_name;
+    public String getName() {
+        return name;
     }
 
-    public void setParty_name(@NotNull String partyName) {
-        this.party_name = partyName;
+    public void setName(@NotNull String partyName) {
+        this.name = partyName;
     }
 
     public int getParty_id() {
@@ -72,7 +70,7 @@ public class Party {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Party{ party_id=").append(party_id);
-        sb.append(", party_name='").append(party_name).append('\'');
+        sb.append(", party_name='").append(name).append('\'');
         sb.append(", creatures=").append(creaturesToString());
         sb.append('}');
          return sb.toString();

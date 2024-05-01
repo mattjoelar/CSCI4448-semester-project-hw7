@@ -184,7 +184,7 @@ public class Creature {
         StringBuilder sb = new StringBuilder();
         sb.append("[");
         sb.append("Party{" + "party_id=").append(party.getParty_id());
-        sb.append(", party_name='").append(party.getParty_name()).append('\'');
+        sb.append(", party_name='").append(party.getName()).append('\'');
         sb.append('}');
 
         sb.delete(sb.length()-2, sb.length()); // Remove the last ", "

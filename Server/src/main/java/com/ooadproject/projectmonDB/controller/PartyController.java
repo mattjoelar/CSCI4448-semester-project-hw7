@@ -25,6 +25,11 @@ public class PartyController {
         return partyDao.getPartyById(id);
     }
 
+    @GetMapping("/party/getByName/{name}")
+    public Party getPartyByName(@PathVariable String name) {
+        return partyDao.getPartyByName(name);
+    }
+
     //Posts to DB server
     @PostMapping("/party/save")
     public Party saveParty(@RequestBody Party party) {

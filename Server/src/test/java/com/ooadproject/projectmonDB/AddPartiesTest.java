@@ -43,7 +43,7 @@ class AddPartiesTest {
         List<Creature> monList = List.of(creature1, creature2);
 
         Party party = new Party();
-        party.setParty_name("Mike");
+        party.setName("Mike");
         party.setCreatures(monList);
 
         partyDao.saveParty(party);

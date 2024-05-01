@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 // @Repository - allows you to use actions (save, delete, ect.)
 @Repository
 public interface PartyRepository extends JpaRepository<Party, Integer> {
-
+    Party findByName(String name);
 }
