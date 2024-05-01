@@ -5,8 +5,10 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Future;
+import java.util.concurrent.*;
+
+import static java.sql.DriverManager.println;
+
 
 // DAO - Data Access Object: abstracts and encapsulates all access to the datasource
 
@@ -14,25 +16,34 @@ import java.util.concurrent.Future;
 @Service
 public class MatchDao {
 
-    @Async("threadPoolTaskExecutor")
-    public void asyncMethodWithConfiguredExecutor() {
-        System.out.println("Execute method with configured executor - "
-                + Thread.currentThread().getName());
+    public static int numOfPlayers = 0 ;
+    SpringAsyncConfig ExecutorMaker = new SpringAsyncConfig();
+    Executor exe = ExecutorMaker.getAsyncExecutor();
+
+
+
+    public CompletableFuture<String> findMatch(NetworkMessage message) throws ExecutionException, InterruptedException {
+        numOfPlayers = numOfPlayers + 1;
+        return waitForMatch(message);
     }
-    public Future<String> findMatch(NetworkMessage message) {
-        CompletableFuture<String> future = CompletableFuture.supplyAsync(() -> {
-            // Simulating a time-consuming computation
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+
+    @Async
+    public CompletableFuture<String> waitForMatch(NetworkMessage message) {
+        return CompletableFuture.supplyAsync(() -> {
+            // Simulating waiting for second player to join
+            println("Hello!");
+//            try {
+//
+//                while (numOfPlayers < 2) {
+//                    Thread.sleep(1000);
+//                }
+//
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
             return "owo"; // The result of the computation
-        });
-        return future;
-
+        },exe);
     }
-
 
 }
 

@@ -9,16 +9,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 public class MatchController {
 
     // Autowired - when run, finds and creates an instance of the class by inversion of control
+    @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection") //suppresses Autowired warning cuz Lord Stack Demands it
     @Autowired
     private MatchDao matchDao;
 
     @GetMapping("/match/find")
-    public Future<String> findMatch(@RequestBody NetworkMessage message) {
+    public String findMatch(@RequestBody NetworkMessage message) throws ExecutionException, InterruptedException {
         return matchDao.findMatch(message);
     }
 
