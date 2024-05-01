@@ -10,13 +10,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
 
 @SpringBootTest
-class ProjectmonDbTest {
+class AddPartiesTest {
 
     @Autowired
     private PartyDao partyDao;
 
     @Test
-    void addCreatureTest() {
+    void addPartiesTest() {
 
         Creature creature1 = new Creature();
         creature1.setIdentifier(1);
@@ -47,27 +47,6 @@ class ProjectmonDbTest {
         party.setCreatures(monList);
 
         partyDao.saveParty(party);
-    }
-
-    //@Test
-    void getAllParties() {
-        List<Party> parties = partyDao.getAllParties();
-        System.out.println(parties);
-        // assert creatures.size == 1;
-    }
-
-    //@Test
-    void deleteCreature() {
-
-    }
-
-    //@Test
-    void deleteAllParties() {
-        List<Party> parties = partyDao.getAllParties();
-        for(Party party : parties){
-            partyDao.deleteParty(party);
-        }
-        // assert creatures.size == 0
     }
 
 }

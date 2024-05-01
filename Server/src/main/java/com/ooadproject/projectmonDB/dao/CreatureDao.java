@@ -25,6 +25,17 @@ public class CreatureDao {
         return creatures;
     }
 
+//    List<Creature> findCreatureByParty(int fk_party_id){
+//        List<Creature> creatures = new ArrayList<>();
+//        Streamable.of(repository.findByPartyfkContaining(fk_party_id))
+//            .forEach(creatures::add);
+//        return creatures;
+//
+//    }
+
+    public Creature getCreatureById(int id) {
+        return repository.findById(id).orElse(null);
+    }
 
     public void deleteCreature(Creature creature) { repository.delete(creature); }
 

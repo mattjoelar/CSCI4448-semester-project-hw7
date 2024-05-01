@@ -1,21 +1,41 @@
 package org.example
 
+import com.ooadproject.projectmonDB.DatabaseApplication
+import com.ooadproject.projectmonDB.dao.PartyDao
 import org.example.Creatures.ProjectmonIdentifier
 import org.example.Projectmon.ProjectmonFactory
-import java.awt.Choice
+import org.springframework.boot.SpringApplication
+import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.runApplication
+import org.springframework.transaction.annotation.EnableTransactionManagement
 
-fun main() {
+@SpringBootApplication(scanBasePackages = ["com.ooadproject.projectmonDB"])
+//@EnableAutoConfiguration -- automatically added
+//@EnableTransactionManagement
+open class Application
+
+fun main(args: Array<String>) {
+    val context = SpringApplication.run(DatabaseApplication::class.java)
+    val partyDao = context.getBean(PartyDao::class.java)
+
+//    val parties = partyDao.getAllParties()
+//    parties.forEach{ println(it) }
+//    context.close()
+//    SpringApplication.run(Application::class.java, *args)
+
+
+
     val player1 = Player()
     player1.projectmons[0] = ProjectmonFactory.generateNewProjectmon(ProjectmonIdentifier.PIKAMAN, 10)
     val player2 = Player()
     player2.projectmons[0] = ProjectmonFactory.generateNewProjectmon(ProjectmonIdentifier.PIKAMAN, 10)
 
-    val choice1 = ChooseParty(player1)
-    val choice2 = ChooseParty(player2)
+    val choice1 = PartyChoice(player1, partyDao)
+    val choice2 = PartyChoice(player2, partyDao)
 
     println("Choose Parties")
     choice1.playerChoice()
-    choice2.playerChoice()
+        choice2.playerChoice()
 
     val battle = Battle(player1, player2)
 

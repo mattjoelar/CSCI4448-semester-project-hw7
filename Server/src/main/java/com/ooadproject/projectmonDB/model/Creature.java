@@ -1,7 +1,6 @@
 package com.ooadproject.projectmonDB.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import org.jetbrains.annotations.NotNull;
 
@@ -44,7 +43,7 @@ public class Creature {
     @NotNull
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "fk_party_id")
-    @JsonBackReference
+//    @JsonBackReference
     private Party party;
 
 //-------------- Getters & Setters --------------//
@@ -143,20 +142,53 @@ public class Creature {
 //---------------- To String ----------------//
 
 
+//    @Override
+//    public String toString() {
+//        return "Creature{" +
+//                "id=" + id +
+//                ", identifier=" + identifier +
+//                ", level=" + level +
+//                ", xp=" + xp +
+//                ", xp_max=" + xp_max +
+//                ", hp=" + hp +
+//                ", attack=" + attack +
+//                ", defense=" + defense +
+//                ", speed=" + speed +
+//                ", moves=" + moves +
+//                ", party=" + party +
+//                '}';
+//    }
+
     @Override
     public String toString() {
-        return "Creature{" +
-                "id=" + id +
-                ", identifier=" + identifier +
-                ", level=" + level +
-                ", xp=" + xp +
-                ", xpMax=" + xp_max +
-                ", hp=" + hp +
-                ", attack=" + attack +
-                ", defense=" + defense +
-                ", speed=" + speed +
-                ", movesID=" + moves +
-                ", party=" + party +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("Creature{ id=").append(id).append(", ");
+        sb.append("identifier=").append(identifier).append(", ");
+        sb.append("level=").append(level).append(", ");
+        sb.append("xp=").append(xp).append(", ");
+        sb.append("xpMax=").append(xp_max).append(", ");
+        sb.append("hp=").append(hp).append(", ");
+        sb.append("attack=").append(attack).append(", ");
+        sb.append("defense=").append(defense).append(", ");
+        sb.append("speed=").append(speed).append(", ");
+        sb.append("moves=").append(moves).append(", ");
+        sb.append("party=").append(partyToString());
+        sb.append("}");
+        return sb.toString();
+    }
+
+    private String partyToString() {
+        if(party == null){
+            return "[]";
+        }
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        sb.append("Party{" + "party_id=").append(party.getParty_id());
+        sb.append(", party_name='").append(party.getParty_name()).append('\'');
+        sb.append('}');
+
+        sb.delete(sb.length()-2, sb.length()); // Remove the last ", "
+        sb.append("]");
+        return sb.toString();
     }
 }
