@@ -43,7 +43,7 @@ public class Creature {
     @NotNull
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "fk_party_id")
-//    @JsonBackReference
+    @JsonBackReference
     private Party party;
 
 //-------------- Getters & Setters --------------//

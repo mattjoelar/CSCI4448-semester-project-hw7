@@ -23,8 +23,8 @@ public class Party {
     @NotNull
     @OneToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY , orphanRemoval = true)
     @JoinColumn(name = "fk_party_id", referencedColumnName = "party_id")
-    @JsonIgnore
-//    @JsonManagedReference
+//    @JsonIgnore
+    @JsonManagedReference
     private List<Creature> creatures = new ArrayList<>();
 
 //-------------- Getters & Setters --------------//
