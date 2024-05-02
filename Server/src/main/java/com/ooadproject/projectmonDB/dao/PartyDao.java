@@ -2,6 +2,7 @@ package com.ooadproject.projectmonDB.dao;
 
 
 import com.ooadproject.projectmonDB.model.Creature;
+import com.ooadproject.projectmonDB.model.Move;
 import com.ooadproject.projectmonDB.model.Party;
 import com.ooadproject.projectmonDB.repository.PartyRepository;
 
@@ -46,14 +47,46 @@ public class PartyDao {
 
     public void printAllParties() {
         List<Party> parties = repository.findAll();
+        StringBuilder sb = new StringBuilder();
+        sb.append(" [ {").append("\n");
         for(Party party : parties) {
-            System.out.println(party);
-//            System.out.println(party.getCreatures());
-//            for(Creature creature : party.getCreatures()) {
-//                System.out.println(creature.getXp_max());
-//            }
+
+            sb.append("\t[ Party{ party_id= ").append(party.getParty_id()).append(", ").append("\n");
+            sb.append("\t party_name ").append(party.getName()).append("\n");
+            sb.append("\t creatures= ");
+            sb.append("[ {").append("\n");
+
+            for(Creature creature : party.getCreatures()){
+                sb.append("\t\t creature_identifier= ").append(creature.getIdentifier()).append(", ").append("\n");
+                sb.append("\t\t level= ").append(creature.getLevel()).append(", ").append("\n");
+                sb.append("\t\t xp= ").append(creature.getXp()).append(", ").append("\n");
+                sb.append("\t\t xpMax= ").append(creature.getXp_max()).append(", ").append("\n");
+                sb.append("\t\t hp= ").append(creature.getHp()).append(", ").append("\n");
+                sb.append("\t\t attack= ").append(creature.getAttack()).append(", ").append("\n");
+                sb.append("\t\t defense= ").append(creature.getDefense()).append(", ").append("\n");
+                sb.append("\t\t speed= ").append(creature.getSpeed()).append(", ").append("\n");
+                sb.append("\t\t moves= ");
+
+                sb.append("[ { ").append("\n");
+                for(Move move : creature.getMoves()) {
+                    sb.append("\t\t\t move_identifier= ").append(move.getIdentifier());
+                    sb.append(", ").append("\n");
+                }
+                sb.delete(sb.length()-2, sb.length()).append("\n");
+                sb.append("\t\t } ], \n");
+
+            }
+            sb.delete(sb.length()-2, sb.length());
+            sb.append("\t } ], \n");
+
+
+
         }
+        sb.delete(sb.length()-2, sb.length());
+        sb.append(" } ]");
+        System.out.println(sb.toString());
     }
+
 
     public Party getPartyByName(String name){
         return repository.findByName(name);

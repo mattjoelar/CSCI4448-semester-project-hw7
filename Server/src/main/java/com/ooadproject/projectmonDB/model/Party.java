@@ -57,47 +57,47 @@ public class Party {
 //---------------- To String ----------------//
 
 
-//    @Override
-//    public String toString() {
-//        return "Party{" +
-//                "party_id=" + party_id +
-//                ", party_name='" + party_name + '\'' +
-//                ", creatures=" + creatures +
-//                '}';
-//    }
-
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Party{ party_id=").append(party_id);
-        sb.append(", party_name='").append(name).append('\'');
-        sb.append(", creatures=").append(creaturesToString());
-        sb.append('}');
-         return sb.toString();
+        return "Party{" +
+                "party_id=" + party_id +
+                ", name='" + name + '\'' +
+                ", creatures=" + creatures +
+                '}';
     }
 
-    private String creaturesToString() {
-        if(creatures.isEmpty()){
-            return "[]";
-        }
-        StringBuilder sb = new StringBuilder();
-        sb.append("[");
-        for(Creature creature : creatures){
-            sb.append("{ id=").append(creature.getId()).append(", ");
-            sb.append("identifier=").append(creature.getIdentifier()).append(", ");
-            sb.append("level=").append(creature.getLevel()).append(", ");
-            sb.append("xp=").append(creature.getXp()).append(", ");
-            sb.append("xpMax=").append(creature.getXp_max()).append(", ");
-            sb.append("hp=").append(creature.getHp()).append(", ");
-            sb.append("attack=").append(creature.getAttack()).append(", ");
-            sb.append("defense=").append(creature.getDefense()).append(", ");
-            sb.append("speed=").append(creature.getSpeed()).append(", ");
-            sb.append("moves=").append(creature.getMoves()).append(" }");
-            sb.append(", ");
-        }
-        sb.delete(sb.length()-2, sb.length()); // Remove the last ", "
-        sb.append("]");
-        return sb.toString();
-    }
+//    @Override
+//    public String toString() {
+//        StringBuilder sb = new StringBuilder();
+//        sb.append("Party{ party_id=").append(party_id);
+//        sb.append(", party_name='").append(name).append('\'');
+//        sb.append(", creatures=").append(creaturesToString());
+//        sb.append('}');
+//         return sb.toString();
+//    }
+//
+//    private String creaturesToString() {
+//        if(creatures.isEmpty()){
+//            return "[]";
+//        }
+//        StringBuilder sb = new StringBuilder();
+//        sb.append("[");
+//        for(Creature creature : creatures){
+//            sb.append("{ id=").append(creature.getId()).append(", ");
+//            sb.append("identifier=").append(creature.getIdentifier()).append(", ");
+//            sb.append("level=").append(creature.getLevel()).append(", ");
+//            sb.append("xp=").append(creature.getXp()).append(", ");
+//            sb.append("xpMax=").append(creature.getXp_max()).append(", ");
+//            sb.append("hp=").append(creature.getHp()).append(", ");
+//            sb.append("attack=").append(creature.getAttack()).append(", ");
+//            sb.append("defense=").append(creature.getDefense()).append(", ");
+//            sb.append("speed=").append(creature.getSpeed()).append(", ");
+//            sb.append("moves=").append(creature.getMoves()).append(" }");
+//            sb.append(", ");
+//        }
+//        sb.delete(sb.length()-2, sb.length()); // Remove the last ", "
+//        sb.append("]");
+//        return sb.toString();
+//    }
 
 }

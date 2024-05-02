@@ -1,8 +1,12 @@
 package com.ooadproject.projectmonDB.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -37,8 +41,15 @@ public class Creature {
     @Column(name = "speed", nullable = false)
     private float speed;
 
-    @Column(name = "moves", nullable = false)
-    private int moves;
+
+    @NotNull
+    @ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
+    @JoinTable(name = "creature_move",
+            joinColumns = @JoinColumn(name = "creature_id"),
+            inverseJoinColumns = @JoinColumn(name = "move_id"))
+//    @JsonIgnore
+    @JsonManagedReference
+    private List<Move> moves = new ArrayList<>();
 
     @NotNull
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -56,53 +67,29 @@ public class Creature {
         this.id = id;
     }
 
-
-    public int getMoves() {
+    @NotNull
+    public List<Move> getMoves() {
         return moves;
     }
 
-    public void setMoves(int movesID) {
-        this.moves = movesID;
+    public void setMoves(@NotNull List<Move> moves) {
+        this.moves = moves;
     }
 
-    public float getSpeed() {
-        return speed;
+    public int getIdentifier() {
+        return identifier;
     }
 
-    public void setSpeed(float speed) {
-        this.speed = speed;
+    public void setIdentifier(int identifier) {
+        this.identifier = identifier;
     }
 
-    public float getDefense() {
-        return defense;
+    public int getLevel() {
+        return level;
     }
 
-    public void setDefense(float defense) {
-        this.defense = defense;
-    }
-
-    public float getAttack() {
-        return attack;
-    }
-
-    public void setAttack(float attack) {
-        this.attack = attack;
-    }
-
-    public float getHp() {
-        return hp;
-    }
-
-    public void setHp(float hp) {
-        this.hp = hp;
-    }
-
-    public int getXp_max() {
-        return xp_max;
-    }
-
-    public void setXp_max(int pxMax) {
-        this.xp_max = pxMax;
+    public void setLevel(int level) {
+        this.level = level;
     }
 
     public int getXp() {
@@ -113,12 +100,44 @@ public class Creature {
         this.xp = xp;
     }
 
-    public int getLevel() {
-        return level;
+    public int getXp_max() {
+        return xp_max;
     }
 
-    public void setLevel(int level) {
-        this.level = level;
+    public void setXp_max(int xp_max) {
+        this.xp_max = xp_max;
+    }
+
+    public float getHp() {
+        return hp;
+    }
+
+    public void setHp(float hp) {
+        this.hp = hp;
+    }
+
+    public float getAttack() {
+        return attack;
+    }
+
+    public void setAttack(float attack) {
+        this.attack = attack;
+    }
+
+    public float getDefense() {
+        return defense;
+    }
+
+    public void setDefense(float defense) {
+        this.defense = defense;
+    }
+
+    public float getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(float speed) {
+        this.speed = speed;
     }
 
     @NotNull
@@ -130,65 +149,55 @@ public class Creature {
         this.party = party;
     }
 
+    //---------------- To String ----------------//
 
-    public int getIdentifier() {
-        return identifier;
-    }
-
-    public void setIdentifier( int identifier) {
-        this.identifier = identifier;
-    }
-
-//---------------- To String ----------------//
-
-
-//    @Override
-//    public String toString() {
-//        return "Creature{" +
-//                "id=" + id +
-//                ", identifier=" + identifier +
-//                ", level=" + level +
-//                ", xp=" + xp +
-//                ", xp_max=" + xp_max +
-//                ", hp=" + hp +
-//                ", attack=" + attack +
-//                ", defense=" + defense +
-//                ", speed=" + speed +
-//                ", moves=" + moves +
-//                ", party=" + party +
-//                '}';
-//    }
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Creature{ id=").append(id).append(", ");
-        sb.append("identifier=").append(identifier).append(", ");
-        sb.append("level=").append(level).append(", ");
-        sb.append("xp=").append(xp).append(", ");
-        sb.append("xpMax=").append(xp_max).append(", ");
-        sb.append("hp=").append(hp).append(", ");
-        sb.append("attack=").append(attack).append(", ");
-        sb.append("defense=").append(defense).append(", ");
-        sb.append("speed=").append(speed).append(", ");
-        sb.append("moves=").append(moves).append(", ");
-        sb.append("party=").append(partyToString());
-        sb.append("}");
-        return sb.toString();
+        return "Creature{" +
+                "id=" + id +
+                ", identifier=" + identifier +
+                ", level=" + level +
+                ", xp=" + xp +
+                ", xp_max=" + xp_max +
+                ", hp=" + hp +
+                ", attack=" + attack +
+                ", defense=" + defense +
+                ", speed=" + speed +
+                ", moves=" + moves +
+                ", party=" + party +
+                '}';
     }
-
-    private String partyToString() {
-        if(party == null){
-            return "[]";
-        }
-        StringBuilder sb = new StringBuilder();
-        sb.append("[");
-        sb.append("Party{" + "party_id=").append(party.getParty_id());
-        sb.append(", party_name='").append(party.getName()).append('\'');
-        sb.append('}');
-
-        sb.delete(sb.length()-2, sb.length()); // Remove the last ", "
-        sb.append("]");
-        return sb.toString();
-    }
+//    @Override
+//    public String toString() {
+//        StringBuilder sb = new StringBuilder();
+//        sb.append("Creature{ id=").append(id).append(", ");
+//        sb.append("identifier=").append(identifier).append(", ");
+//        sb.append("level=").append(level).append(", ");
+//        sb.append("xp=").append(xp).append(", ");
+//        sb.append("xpMax=").append(xp_max).append(", ");
+//        sb.append("hp=").append(hp).append(", ");
+//        sb.append("attack=").append(attack).append(", ");
+//        sb.append("defense=").append(defense).append(", ");
+//        sb.append("speed=").append(speed).append(", ");
+//        sb.append("moves=").append(moves).append(", ");
+//        sb.append("party=").append(partyToString());
+//        sb.append("}");
+//        return sb.toString();
+//    }
+//
+//    private String partyToString() {
+//        if(party == null){
+//            return "[]";
+//        }
+//        StringBuilder sb = new StringBuilder();
+//        sb.append("[");
+//        sb.append("Party{" + "party_id=").append(party.getParty_id());
+//        sb.append(", party_name='").append(party.getName()).append('\'');
+//        sb.append('}');
+//
+//        sb.delete(sb.length()-2, sb.length()); // Remove the last ", "
+//        sb.append("]");
+//        return sb.toString();
+//    }
 }
