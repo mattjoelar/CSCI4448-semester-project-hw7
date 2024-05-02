@@ -7,21 +7,22 @@ plugins {
 group = 'com.websocketTest'
 version = '0.0.1-SNAPSHOT'
 
+
 java {
 	sourceCompatibility = '17'
 }
-
 repositories {
 	mavenCentral()
+
 }
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-websocket'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.webjars:webjars-locator-core'
-	implementation 'org.webjars:sockjs-client:1.8.2'
+	//implementation 'org.webjars:sockjs-client:1.8.2'
 	implementation 'org.webjars:stomp-websocket:2.3.3'
 	implementation 'org.webjars:bootstrap:5.3.2'
 	implementation 'org.webjars:jquery:3.6.4'
