@@ -10,7 +10,8 @@ import java.util.List;
 @Entity
 @Table(name="move")
 public class Move {
-    @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "identifier", nullable = false)
