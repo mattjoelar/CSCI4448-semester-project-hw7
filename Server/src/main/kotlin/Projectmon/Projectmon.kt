@@ -23,6 +23,7 @@ class Projectmon {
         get() {
             return currentData.name
         }
+
     public var health : Float
         get() {
             return currentData.health
@@ -30,32 +31,39 @@ class Projectmon {
         set(newHealth : Float) {
             currentData.health = min(baseData.health, max(newHealth, 0f))
         }
+
     public val maxhealth : Float
         get() {
             return baseData.health
         }
+
     public val attack : Float
         get() {
             return currentData.attack
         }
+
     public val defense : Float
         get() {
             return currentData.defense
         }
+
     public val speed : Float
         get() {
             return currentData.speed
         }
+
     public fun isDead(): Boolean {
         return health == 0f
     }
+
     public fun getMove(idx : Int) : ProjectmonMove {
         return currentData.moves[idx]
     }
+
     public fun getPpOfMove(idx : Int) : Int {
         return if(idx in 0..3) currentData.pp[idx] else 0
     }
-
+//-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_//
     public fun useMoveAgainst(moveIdx: Int, against: Projectmon) {
         if(getPpOfMove(moveIdx) < 0) {
             println("Error: Move has no PP, this should not have been called!")

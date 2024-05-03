@@ -44,7 +44,7 @@ class AddPartiesTest {
         creature1.setMoves(movesList1);
 
         Creature creature2 = new Creature();
-        creature2.setIdentifier(1);
+        creature2.setIdentifier(2);
         creature2.setLevel(2);
         creature2.setXp(50);
         creature2.setXp_max(300);
@@ -54,13 +54,86 @@ class AddPartiesTest {
         creature2.setSpeed(55);
         creature2.setMoves(movesList2);
 
-        List<Creature> monList = List.of(creature1, creature2);
+        Creature creature3 = new Creature();
+        creature2.setIdentifier(3);
+        creature2.setLevel(3);
+        creature2.setXp(50);
+        creature2.setXp_max(400);
+        creature2.setHp(150);
+        creature2.setAttack(30);
+        creature2.setDefense(30);
+        creature2.setSpeed(55);
+        creature2.setMoves(movesList2);
 
-        Party party = new Party();
-        party.setName("Mike");
-        party.setCreatures(monList);
+        Creature creature4 = new Creature();
+        creature2.setIdentifier(4);
+        creature2.setLevel(4);
+        creature2.setXp(50);
+        creature2.setXp_max(500);
+        creature2.setHp(150);
+        creature2.setAttack(30);
+        creature2.setDefense(30);
+        creature2.setSpeed(55);
+        creature2.setMoves(movesList2);
 
-        partyDao.saveParty(party);
+        List<Creature> monList1 = List.of(creature1, creature2, creature3, creature4);
+
+        Party party1 = new Party();
+        party1.setName("Mike");
+        party1.setCreatures(monList1);
+
+        Creature creature5 = new Creature();
+        creature1.setIdentifier(3);
+        creature1.setLevel(1);
+        creature1.setXp(20);
+        creature1.setXp_max(100);
+        creature1.setHp(100);
+        creature1.setAttack(20);
+        creature1.setDefense(20);
+        creature1.setSpeed(50);
+        creature1.setMoves(movesList1);
+
+        Creature creature6 = new Creature();
+        creature2.setIdentifier(2);
+        creature2.setLevel(2);
+        creature2.setXp(50);
+        creature2.setXp_max(300);
+        creature2.setHp(150);
+        creature2.setAttack(30);
+        creature2.setDefense(30);
+        creature2.setSpeed(55);
+        creature2.setMoves(movesList2);
+
+        Creature creature7 = new Creature();
+        creature2.setIdentifier(4);
+        creature2.setLevel(3);
+        creature2.setXp(50);
+        creature2.setXp_max(400);
+        creature2.setHp(150);
+        creature2.setAttack(30);
+        creature2.setDefense(30);
+        creature2.setSpeed(55);
+        creature2.setMoves(movesList2);
+
+        Creature creature8 = new Creature();
+        creature2.setIdentifier(2);
+        creature2.setLevel(7);
+        creature2.setXp(50);
+        creature2.setXp_max(500);
+        creature2.setHp(150);
+        creature2.setAttack(30);
+        creature2.setDefense(30);
+        creature2.setSpeed(55);
+        creature2.setMoves(movesList1);
+
+        List<Creature> monList2 = List.of(creature5, creature6, creature7,creature8);
+
+        Party party2 = new Party();
+        party2.setName("John");
+        party2.setCreatures(monList2);
+
+        partyDao.saveParty(party1);
+        partyDao.saveParty(party2);
     }
 
 }

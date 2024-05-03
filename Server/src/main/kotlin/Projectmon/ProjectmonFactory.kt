@@ -1,7 +1,10 @@
 package org.example.Projectmon
 
 import Projectmon.EntryProjectmon
+import com.ooadproject.projectmonDB.model.Creature
+import com.ooadproject.projectmonDB.model.Move
 import org.example.Creatures.*
+import org.example.Creatures.ProjectmonMove.Companion.getIdentifier
 import kotlin.random.Random
 
 class ProjectmonFactory {
@@ -64,5 +67,35 @@ class ProjectmonFactory {
 
             return Projectmon(instanceData)
         }
+
+        fun createFromDb(creature: Creature): Projectmon {
+            val moves = getMoves(creature)
+            val projectmon = Projectmon()
+            projectmon.baseData.name = ProjectmonIdentifier.getIdentifier(creature.id)
+            projectmon.baseData.level = creature.level
+            projectmon.baseData.xp = creature.xp
+            projectmon.baseData.xpMax =creature.xp_max
+            projectmon.baseData.health = creature.hp
+            projectmon.baseData.attack = creature.attack
+            projectmon.baseData.defense = creature.defense
+            projectmon.baseData.speed = creature.speed
+            for(i in 0..getMoves(creature).size) {
+                val move = getIdentifier(moves[i].identifier)
+                projectmon.baseData.moves[i] = move
+                projectmon.baseData.pp[i] = (Entries.lookupMove(move)).pp
+            }
+
+
+            return projectmon
+        }
+
+        private fun getMoves(creature: Creature?): List<Move> {
+            return creature!!.moves
+        }
+
     }
+
+
+
+
 }
