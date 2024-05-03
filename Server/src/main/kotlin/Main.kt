@@ -1,20 +1,30 @@
 package org.example
 
-import Projectmon.ProjectmonIdentifier
-import org.example.Projectmon.ProjectmonFactory
+import com.ooadproject.projectmonDB.DatabaseApplication
+import com.ooadproject.projectmonDB.dao.PartyDao
+import org.springframework.boot.SpringApplication
+import org.springframework.boot.autoconfigure.SpringBootApplication
+
+
+@SpringBootApplication(scanBasePackages = ["com.ooadproject.projectmonDB"])
+open class MainApplication
 
 fun main() {
-    val player1 = Player()
-    player1.projectmons[0] = ProjectmonFactory.generateNewProjectmon(ProjectmonIdentifier.PIKAMAN, 10)
-    val player2 = Player()
-    player2.projectmons[0] = ProjectmonFactory.generateNewProjectmon(ProjectmonIdentifier.PIKAMAN, 10)
+    val context = SpringApplication.run(DatabaseApplication::class.java)
+    val partyDao = context.getBean(PartyDao::class.java)
 
-    val choice1 = ChooseParty(player1)
-    val choice2 = ChooseParty(player2)
+
+    val player1 = Player()
+    val player2 = Player()
+
+
+    val choice1 = PartyChoice(player1, partyDao)
+    val choice2 = PartyChoice(player2, partyDao)
 
     println("Choose Parties")
-    choice1.playerChoice()
-    choice2.playerChoice()
+    choice1.playerChoice("Mike")
+    choice2.playerChoice("John")
+
 
     val battle = Battle(player1, player2)
 

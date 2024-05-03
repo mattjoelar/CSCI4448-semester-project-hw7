@@ -1,5 +1,7 @@
 package org.example
 
+package org.springframework.beans.factory
+
 import com.ooadproject.projectmonDB.dao.PartyDao
 import com.ooadproject.projectmonDB.model.Party
 import org.springframework.beans.factory.annotation.Autowired
