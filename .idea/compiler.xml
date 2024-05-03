@@ -5,8 +5,9 @@
       <module name="CreatureFight" target="17" />
       <module name="CreatureFight.main" target="17" />
       <module name="CreatureFight.test" target="17" />
-      <module name="MCClient.test" target="17" />
-      <module name="org.example.MCClient.main" target="17" />
+      <module name="ws-tutorial" target="17" />
+      <module name="ws-tutorial.main" target="17" />
+      <module name="ws-tutorial.test" target="17" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -30,18 +30,21 @@ class PartyChoice(private val player1 : Player, private val partyDao: PartyDao) 
             for (i in 1..5){
                 player1.projectmons[i] = ProjectmonFactory.generateNewProjectmon( getRandomProjectmonIdentifier(), 1)
             }
+
             player1.partyName = name
 //            saveParty(player1)
+
             return
         } else if(parties.any { it.name == name }){
             println("Good Choice!!")
+
             val party = getPartyByName(name)
             val creatures = getCreatures(party)
+
             player1.partyName = name
             for(i in 0..getCreatures(party).size){
                 player1.projectmons[i] = createFromDb(creatures[i])
             }
-
 
             return
         }

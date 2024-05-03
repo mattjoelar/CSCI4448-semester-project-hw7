@@ -1,6 +1,7 @@
 package org.example
 
 //import com.ooadproject.projectmonDB.DatabaseApplication
+import com.ooadproject.projectmonDB.DatabaseApplication
 import com.ooadproject.projectmonDB.dao.PartyDao
 import org.example.Creatures.ProjectmonIdentifier
 import org.example.Projectmon.ProjectmonFactory
@@ -15,7 +16,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement
 open class Application
 
 fun main(args: Array<String>) {
-    val context = SpringApplication.run(Application::class.java)
+    val context = SpringApplication.run(DatabaseApplication::class.java)
     val partyDao = context.getBean(PartyDao::class.java)
 
 
@@ -30,7 +31,7 @@ fun main(args: Array<String>) {
 
     println("Choose Parties")
     choice1.playerChoice("Mike")
-        choice2.playerChoice("John")
+    choice2.playerChoice("John")
 
     val battle = Battle(player1, player2)
 
