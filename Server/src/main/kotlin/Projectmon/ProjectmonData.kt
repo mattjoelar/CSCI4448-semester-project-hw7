@@ -3,7 +3,7 @@ package org.example.Creatures
 import Projectmon.EntryProjectmon
 
 data class ProjectmonData(
-    var name: ProjectmonIdentifier = ProjectmonIdentifier.EMPTY,
+    var identifier: ProjectmonIdentifier = ProjectmonIdentifier.EMPTY,
     var level: Int = 0,
     var xp: Int = 0,
     var xpMax: Int = 0,
@@ -16,7 +16,7 @@ data class ProjectmonData(
     var statusEffects: MutableList<ProjectmonStatus> = mutableListOf<ProjectmonStatus>()
 ) {
     fun levelUp(newLevel : Int) {
-        var entry : EntryProjectmon = Entries.lookupProjectmon(name)
+        var entry : EntryProjectmon = Entries.lookupProjectmon(identifier)
         throw Exception("Not yet implemented!")
     }
 }

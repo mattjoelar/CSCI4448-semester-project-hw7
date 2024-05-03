@@ -88,6 +88,14 @@ object Entries {
                     mapOf<String, String>("Power" to "1")
                 )
             )
+        ),
+        ProjectmonMove.SCRATCH to EntryMove(
+            "Scratch",
+            ProjectmonType.FERAL,
+            20,
+            arrayOf<MoveDecorator>(
+
+            )
         )
     )
 
