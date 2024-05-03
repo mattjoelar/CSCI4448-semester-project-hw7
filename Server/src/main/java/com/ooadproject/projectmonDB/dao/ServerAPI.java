@@ -14,7 +14,7 @@ import static java.sql.DriverManager.println;
 
 
 @Service
-public class MatchDao {
+public class ServerAPI {
 
     public static int numOfPlayers = 0;
     SpringAsyncConfig ExecutorMaker = new SpringAsyncConfig();

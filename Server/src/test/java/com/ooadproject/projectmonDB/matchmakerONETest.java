@@ -1,10 +1,9 @@
 package com.ooadproject.projectmonDB;
 
-import com.ooadproject.projectmonDB.dao.MatchDao;
+import com.ooadproject.projectmonDB.dao.ServerAPI;
 import org.example.NetworkMessage;
 import org.junit.jupiter.api.Test;
 
-import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 
 public class matchmakerONETest {
@@ -14,11 +13,11 @@ public class matchmakerONETest {
 
     @Test
     void matchMakerPlayerOneConnects() throws ExecutionException, InterruptedException {
-        MatchDao matchDao = new MatchDao();
+        ServerAPI serverAPI = new ServerAPI();
         NetworkMessage message = new NetworkMessage("I wanna fight");
 
-        matchDao.findMatch();
+        serverAPI.findMatch();
 
-        assert (MatchDao.numOfPlayers == 1 );
+        assert (ServerAPI.numOfPlayers == 1 );
     }
 }
