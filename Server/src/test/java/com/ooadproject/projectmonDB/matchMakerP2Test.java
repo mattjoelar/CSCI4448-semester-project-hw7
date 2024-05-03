@@ -16,11 +16,11 @@ public class matchMakerP2Test {
         MatchDao matchDao = new MatchDao();
         NetworkMessage message = new NetworkMessage("I wanna fight");
 
-        CompletableFuture<NetworkMessage> p1 = matchDao.findMatch(message);
+        CompletableFuture<NetworkMessage> p1 = matchDao.findMatch();
 
         NetworkMessage message2 = new NetworkMessage("I wanna fight as well");
 
-        CompletableFuture<NetworkMessage> p2 = matchDao.findMatch(message2);
+        CompletableFuture<NetworkMessage> p2 = matchDao.findMatch();
 
         //waits for both players
         CompletableFuture.allOf(p1, p2).join();

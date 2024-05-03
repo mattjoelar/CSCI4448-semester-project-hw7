@@ -1,6 +1,7 @@
-package com.websocketTest.wstutorial;
+package com.ooadproject.wstutorial;
 
-import com.websocketTest.wstutorial.dto.ResponseMessage;
+
+import com.ooadproject.wstutorial.dto.ResponseMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;

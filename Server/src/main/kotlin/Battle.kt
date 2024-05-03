@@ -15,6 +15,7 @@ class Battle(private val player1 : Player, private val player2 : Player) {
     }
 
 
+
     fun generateGameStateUpdateNetworkMessage(player1ProjectmonData : ProjectmonData, player2ProjectmonData : ProjectmonData) : NetworkMessage {
         return NetworkMessage("LOGIC GOES HERE IDK")
     }

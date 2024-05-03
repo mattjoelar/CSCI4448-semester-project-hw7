@@ -1,4 +1,4 @@
-package com.websocketTest.wstutorial;
+package com.ooadproject.wstutorial;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
@@ -22,5 +22,8 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
         registry.addEndpoint("/our-websocket")
                 .setHandshakeHandler(new UserHandshakeHandler())  // Each time a new connection is made to the page, a new userID is created
                 .withSockJS();  //Used when connecting to SockJS endpoint
+
+
+
     }
 }

@@ -1,6 +1,7 @@
-package com.websocketTest.wstutorial;
+package com.ooadproject.wstutorial;
 
-import com.websocketTest.wstutorial.dto.Message;
+
+import com.ooadproject.wstutorial.dto.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;

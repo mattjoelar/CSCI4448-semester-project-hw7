@@ -22,7 +22,7 @@ public class MatchDao {
 
 
     @Async
-    public CompletableFuture<NetworkMessage> findMatch(NetworkMessage message) throws ExecutionException, InterruptedException {
+    public CompletableFuture<NetworkMessage> findMatch() throws ExecutionException, InterruptedException {
         numOfPlayers = numOfPlayers + 1;
         return CompletableFuture.supplyAsync(() -> {
             // Simulating waiting for another player to join
@@ -36,11 +36,7 @@ public class MatchDao {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            return new NetworkMessage(
-                    """
-                            {
-                            "Start Match"
-                            }""");
+            return new NetworkMessage("Start Match");
                 // JSON string in NetworkMessage, need to change back to map.
                 //Text block seems useful
         }, exe);

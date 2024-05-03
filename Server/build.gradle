@@ -8,6 +8,9 @@ plugins {
 group = 'org.example'
 version = '1.0-SNAPSHOT'
 
+group = 'com.websocketTest'
+//version = '0.0.1-SNAPSHOT'
+
 java {
     sourceCompatibility = '17'
 }
@@ -19,16 +22,27 @@ repositories {
 
 dependencies {
     testImplementation 'org.jetbrains.kotlin:kotlin-test'
-    implementation 'com.google.code.gson:gson:2.8.8'
+    implementation 'com.google.code.gson:gson:2.8.9'
 
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-websocket'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.webjars:webjars-locator-core'
+    //implementation 'org.webjars:sockjs-client:1.8.2'
+    implementation 'org.webjars:stomp-websocket:2.3.3'
+    implementation 'org.webjars:bootstrap:5.3.2'
+    implementation 'org.webjars:jquery:3.6.4'
 
     // https://mvnrepository.com/artifact/mysql/mysql-connector-java
     implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.33'
 
 
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
 }
 
 test {

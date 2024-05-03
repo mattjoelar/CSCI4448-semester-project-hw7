@@ -17,8 +17,8 @@ public class matchmakerONETest {
         MatchDao matchDao = new MatchDao();
         NetworkMessage message = new NetworkMessage("I wanna fight");
 
-        matchDao.findMatch(message);
+        matchDao.findMatch();
 
-        assert (matchDao.numOfPlayers == 1 );
+        assert (MatchDao.numOfPlayers == 1 );
     }
 }

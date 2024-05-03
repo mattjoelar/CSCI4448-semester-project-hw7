@@ -1,4 +1,4 @@
-package com.websocketTest.wstutorial;
+package com.ooadproject.projectmonDB;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

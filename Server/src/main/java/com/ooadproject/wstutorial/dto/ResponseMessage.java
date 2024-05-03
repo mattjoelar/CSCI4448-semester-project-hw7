@@ -1,4 +1,4 @@
-package com.websocketTest.wstutorial.dto;
+package com.ooadproject.wstutorial.dto;
 
 public class ResponseMessage {
     private String content;

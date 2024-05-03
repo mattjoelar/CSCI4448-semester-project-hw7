@@ -12,7 +12,7 @@ import java.util.concurrent.ExecutionException;
 
 @RestController
 public class MatchController {
-
+    //may not need this entire class
     // Autowired - when run, finds and creates an instance of the class by inversion of control
 
     @Autowired
@@ -20,7 +20,7 @@ public class MatchController {
 
     @GetMapping("/match/find")
     public Map<?, ?> findMatch(@RequestBody NetworkMessage message) throws ExecutionException, InterruptedException {
-        return matchDao.findMatch(message).get().asMap();
+        return matchDao.findMatch().get().asMap();
     }
     //Called 1 time, player waits until another player class it, then both functions return "Start Match" as a Kotlin Map
 
