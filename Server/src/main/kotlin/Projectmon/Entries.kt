@@ -1,7 +1,13 @@
 package org.example.Creatures
 
 import Projectmon.EntryProjectmon
+import org.example.MoveEffects.MoveData
+import org.example.MoveEffects.MoveDecorator
+import org.example.MoveEffects.DamageDecorator
 
+/* SINGLETON PATTERN
+
+ */
 object Entries {
     // creatureEntries maps CreatureNames to CreatureEntries and contains the values for all creatures.
     private val creatureEntries : Map<ProjectmonIdentifier, EntryProjectmon> = mapOf(
@@ -62,24 +68,28 @@ object Entries {
     )
 
     private val moveEntries : Map<ProjectmonMove, EntryMove> = mapOf(
-        ProjectmonMove.MISSINGNO to EntryMove("MissingNo",
-            ProjectmonType.EMPTY, 0, 0
+        ProjectmonMove.MISSINGNO to EntryMove(
+            "MissingNo",
+            ProjectmonType.MISSINGNO,
+            0,
+            arrayOf<MoveDecorator>()
         ),
-        ProjectmonMove.EMPTY to EntryMove("",
-            ProjectmonType.EMPTY, 0, 0
+        ProjectmonMove.EMPTY to EntryMove(
+            "",
+            ProjectmonType.EMPTY,
+            0,
+            arrayOf<MoveDecorator>()
         ),
-        ProjectmonMove.TICKLE to EntryMove("Tickle",
-            ProjectmonType.FERAL, 25, 1
-        ),
-        ProjectmonMove.SCRATCH to EntryMove("Scratch",
-            ProjectmonType.FERAL, 20, 5
-        ),
-        ProjectmonMove.FLAMETHROWER to EntryMove("Flamethrower",
-            ProjectmonType.FIRE, 20, 15
-        ),
-        ProjectmonMove.FLYING_KNEE to EntryMove("Flying Knee",
-            ProjectmonType.LIGHT, 1, 55
-        ),
+        ProjectmonMove.TICKLE to EntryMove(
+            "Tickle",
+            ProjectmonType.FERAL,
+            30,
+            arrayOf<MoveDecorator>(
+                DamageDecorator(
+                    mapOf<String, String>("Power" to "1")
+                )
+            )
+        )
     )
 
     // Returns a valid projectmon if id exists, otherwise returns MissingNo

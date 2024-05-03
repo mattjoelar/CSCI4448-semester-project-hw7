@@ -9,4 +9,5 @@ enum class ProjectmonMove(val value: Int) {
     SCRATCH(2),
     FLAMETHROWER(3),
     FLYING_KNEE(4),
+    THUNDER_DANCE(5),
 }

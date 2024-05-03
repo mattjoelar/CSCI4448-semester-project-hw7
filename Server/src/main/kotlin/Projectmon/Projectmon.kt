@@ -1,6 +1,7 @@
 package org.example.Creatures
 
 import Projectmon.EntryProjectmon
+import org.example.Arena
 import kotlin.math.max
 import kotlin.math.min
 
@@ -18,8 +19,12 @@ class Projectmon {
         currentData = data.copy();
     }
 
+    public fun getName() : String {
+        return Entries.lookupProjectmon(currentData.name).name
+    }
+
     // Data accessors
-    public val name : ProjectmonIdentifier
+    public val identifier : ProjectmonIdentifier
         get() {
             return currentData.name
         }
@@ -56,18 +61,13 @@ class Projectmon {
         return if(idx in 0..3) currentData.pp[idx] else 0
     }
 
-    public fun useMoveAgainst(moveIdx: Int, against: Projectmon) {
+    public fun useMoveAgainst(moveIdx: Int, against: Projectmon, arena : Arena) : Array<String> {
         if(getPpOfMove(moveIdx) < 0) {
-            println("Error: Move has no PP, this should not have been called!")
-            return
+            return arrayOf("Error: Move has no PP, this should not have been able to be called!")
         }
         val moveData = Entries.lookupMove(currentData.moves[moveIdx])
-        val againstProjectmon = Entries.lookupProjectmon(against.name)
-        val typeModifier = Entries.lookupEffectiveness(moveData.type, againstProjectmon.type1) * Entries.lookupEffectiveness(moveData.type, againstProjectmon.type2)
-        // https://bulbapedia.bulbagarden.net/wiki/Damage - Gen V Onward
-        val damage : Float = ((2 * (currentData.level / 5) * typeModifier * moveData.power * (currentData.attack / against.currentData.defense)) / 50) + 2
 
-        against.currentData.health -= damage
+        return moveData.use(this, against, arena)
     }
 
     // This needs to be updated to include evolutions!

@@ -42,4 +42,7 @@ data class EntryProjectmon(
         // 100 + 10x + 2^(1+.1x)
         return if (level == 100) Int.MAX_VALUE else (100 + (10f * level) + 2f.pow(1f + level.toFloat() * 0.1f)).toInt()
     }
+    public fun isOfType(type : ProjectmonType) : Boolean {
+        return type1 == type || type2 == type
+    }
 }

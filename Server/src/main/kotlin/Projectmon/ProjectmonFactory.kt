@@ -4,6 +4,12 @@ import Projectmon.EntryProjectmon
 import org.example.Creatures.*
 import kotlin.random.Random
 
+/* FACTORY PATTERN
+Rather than have separate methods for each projectmon identifier, this takes an ID for a projectmon
+and converts it to a unique instance of a projectmon. These are effectively separate classes as they have
+different stats and behaviors, however to comply with the networked nature of this game, it's in a more
+data-oriented way than typical object-oriented implementations of it.
+*/
 class ProjectmonFactory {
     companion object {
         fun generateNewProjectmon(name: ProjectmonIdentifier, level: Int): Projectmon {

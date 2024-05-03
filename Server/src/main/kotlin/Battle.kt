@@ -1,11 +1,12 @@
 package org.example
 
 import org.example.Creatures.Entries
-import org.example.Creatures.Projectmon
 import org.example.Creatures.ProjectmonData
-import org.example.Projectmon.GameStateUpdate
 
 class Battle(private val player1 : Player, private val player2 : Player) {
+
+    private var arena : Arena = Arena()
+
     private fun getPlayer(idx : Int) : Player {
         return if(idx == 0) player1 else player2
     }
@@ -42,7 +43,7 @@ class Battle(private val player1 : Player, private val player2 : Player) {
                                 println("It's player ${turn + 1}'s turn!")
                                 val originalHealth = otherPlayer.getActiveProjectmon().health
                                 player.getActiveProjectmon().useMoveAgainst(idx, otherPlayer.getActiveProjectmon())
-                                println("${Entries.lookupProjectmon(player.getActiveProjectmon().name).name} used ${Entries.lookupMove(player.getActiveProjectmon().getMove(idx)).name} and dealt ${originalHealth - otherPlayer.getActiveProjectmon().health} damage, leaving its opponent at ${otherPlayer.getActiveProjectmon().health}!")
+                                println("${Entries.lookupProjectmon(player.getActiveProjectmon().identifier).name} used ${Entries.lookupMove(player.getActiveProjectmon().getMove(idx)).name} and dealt ${originalHealth - otherPlayer.getActiveProjectmon().health} damage, leaving its opponent at ${otherPlayer.getActiveProjectmon().health}!")
                                 success = true
                             } else {
                                 println("Error: ${player}'s useMove request used index $idx which has pp of ${player.getActiveProjectmon().getPpOfMove(idx)}.")
