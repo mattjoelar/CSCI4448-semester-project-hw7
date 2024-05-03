@@ -20,13 +20,13 @@ class Projectmon {
     }
 
     public fun getName() : String {
-        return Entries.lookupProjectmon(currentData.name).name
+        return Entries.lookupProjectmon(currentData.identifier).name
     }
 
     // Data accessors
     public val identifier : ProjectmonIdentifier
         get() {
-            return currentData.name
+            return currentData.identifier
         }
     public var health : Float
         get() {
@@ -77,12 +77,12 @@ class Projectmon {
             return
         }
 
-        var entry : EntryProjectmon = Entries.lookupProjectmon(baseData.name)
+        var entry : EntryProjectmon = Entries.lookupProjectmon(baseData.identifier)
 
         // Check if this projectmon needs to evolve
         baseData.level = to
         if(entry.evolvesAtLevelInto.first > 0 && entry.evolvesAtLevelInto.first <= baseData.level) {
-            baseData.name = entry.evolvesAtLevelInto.second
+            baseData.identifier = entry.evolvesAtLevelInto.second
         }
 
         // Keep track of current stats to update later
