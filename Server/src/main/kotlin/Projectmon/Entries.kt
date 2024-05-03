@@ -9,7 +9,7 @@ import org.example.MoveEffects.DamageDecorator
  */
 object Entries {
     // creatureEntries maps CreatureNames to CreatureEntries and contains the values for all creatures.
-    private val creatureEntries : Map<ProjectmonIdentifier, EntryProjectmon> = mapOf(
+    private val projectmonEntries : Map<ProjectmonIdentifier, EntryProjectmon> = mapOf(
         ProjectmonIdentifier.MISSINGNO to EntryProjectmon(
             "MissingNo",
             ProjectmonType.EMPTY,
@@ -101,8 +101,8 @@ object Entries {
 
     // Returns a valid projectmon if id exists, otherwise returns MissingNo
     public fun lookupProjectmon(value: ProjectmonIdentifier) : EntryProjectmon {
-        val entry : EntryProjectmon? = creatureEntries[value]
-        return if (entry == null) creatureEntries[ProjectmonIdentifier.MISSINGNO] as EntryProjectmon else entry as EntryProjectmon
+        val entry : EntryProjectmon? = projectmonEntries[value]
+        return if (entry == null) projectmonEntries[ProjectmonIdentifier.MISSINGNO] as EntryProjectmon else entry as EntryProjectmon
     }
 
     // Returns a valid move if id exists, otherwise returns MissingNo
