@@ -7,6 +7,8 @@
     <list default="true" id="7b570239-53b3-46d0-9c67-222fa182d808" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Battle.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Battle.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Player.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Player.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Projectmon/ProjectmonFactory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Projectmon/ProjectmonFactory.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/kotlin/com/ooadproject/projectmontests/ProjectmonTests.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/com/ooadproject/projectmontests/ProjectmonTests.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -185,7 +187,7 @@
     <servers />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/MCClient$ProjectmonTests.ic" NAME="ProjectmonTests Coverage Results" MODIFIED="1714726906157" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/MCClient$ProjectmonTests.ic" NAME="ProjectmonTests Coverage Results" MODIFIED="1714763420442" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/MCClient$Tests_in__MCClient_test_.ic" NAME="Tests in 'MCClient.test' Coverage Results" MODIFIED="1714709343580" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/MCClient$Tests_in__com_ooadproject_projectmontests_.ic" NAME="Tests in 'com.ooadproject.projectmontests' Coverage Results" MODIFIED="1714723172650" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>

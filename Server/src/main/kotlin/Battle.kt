@@ -8,7 +8,8 @@ class Battle(private val player1 : Player, private val player2 : Player) {
     // This should be marked as private but don't want to push any bad changes
     public var arena : Arena = Arena()
 
-    private fun getPlayer(idx : Int) : Player {
+    // Marking as public for tests
+    public fun getPlayer(idx : Int) : Player {
         return if(idx == 0) player1 else player2
     }
 

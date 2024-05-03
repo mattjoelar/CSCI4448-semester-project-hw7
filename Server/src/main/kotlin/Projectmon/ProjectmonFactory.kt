@@ -74,6 +74,10 @@ class ProjectmonFactory {
         }
 
         fun createFromDb(creature: Creature): Projectmon {
+            fun getMoves(creature: Creature?): List<Move> {
+                return creature!!.moves
+            }
+
             val moves = getMoves(creature)
             val projectmon = Projectmon()
             projectmon.baseData.identifier = ProjectmonIdentifier.getIdentifier(creature.id)
@@ -90,12 +94,7 @@ class ProjectmonFactory {
                 projectmon.baseData.pp[i] = (Entries.lookupMove(move)).pp
             }
 
-
             return projectmon
-        }
-
-        private fun getMoves(creature: Creature?): List<Move> {
-            return creature!!.moves
         }
     }
 }

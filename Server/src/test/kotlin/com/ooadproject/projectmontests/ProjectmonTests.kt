@@ -1,9 +1,12 @@
 package com.ooadproject.projectmontests
 
 import Projectmon.*
-import org.example.Battle
-import org.example.Player
+import org.example.*
 import org.example.Projectmon.ProjectmonFactory
+import org.example.Weather.WeatherClear
+import org.example.Weather.WeatherHail
+import org.example.Weather.WeatherHurricane
+import org.example.Weather.WeatherThunderstorm
 import org.junit.jupiter.api.Test
 
 class ProjectmonTests {
@@ -43,12 +46,27 @@ class ProjectmonTests {
         val battle : Battle = Battle(player1, player2)
         assert(battle.useMove(player1, player2, 0).wasSuccessful)
         assert(battle.switchProjectmon(player1, 1).wasSuccessful)
+        assert(battle.getPlayer(0) == player1)
 
-        val
+        val arena : Arena = Arena()
+        arena.setWeather(WeatherClear())
+        arena.setWeather(WeatherHurricane())
+        arena.setWeather(WeatherThunderstorm())
+        arena.setWeather(WeatherHail())
+        val strings = arena.apply(newProjectmon, otherNewProjectmon)
+        assert(strings.size >= 2)
 
+        val choice : NetworkMessage = ChoiceFactory.createUseMoveChoice(5)
+        assert(choice.asMap()["choice"] == "useMove")
+        assert(choice.asMap()["moveIdx"] == "5")
+        val choice2 : NetworkMessage = ChoiceFactory.createSwitchProjectmonChoice(5)
+        assert(choice2.asMap()["choice"] == "switchPjmn")
+        assert(choice2.asMap()["pjmnIdx"] == "5")
+        //val choice3 : NetworkMessage = ChoiceFactory.forfeit()
+        //assert(choice3.asMap()["choice"] == "forfeit")
 
-
-
+        // This seems silly to check but doing this for coverage
+        assert(ProjectmonItem.EMPTY.value == 0)
 
         assert(battle.playerForfeit(player1).wasSuccessful)
     }
