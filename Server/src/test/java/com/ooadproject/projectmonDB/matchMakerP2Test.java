@@ -13,14 +13,14 @@ public class matchMakerP2Test {
 
     @Test
     void matchMakerPlayerTWOConnects() throws ExecutionException, InterruptedException {
-        MatchDao matchDao = new MatchDao();
+        ServerAPI serverAPI= new ServerAPI();
         NetworkMessage message = new NetworkMessage("I wanna fight");
 
-        CompletableFuture<NetworkMessage> p1 = matchDao.findMatch(message);
+        CompletableFuture<NetworkMessage> p1 = ServerAPI.findMatch(message);
 
         NetworkMessage message2 = new NetworkMessage("I wanna fight as well");
 
-        CompletableFuture<NetworkMessage> p2 = matchDao.findMatch(message2);
+        CompletableFuture<NetworkMessage> p1 = ServerAPI.findMatch(message);
 
         //waits for both players
         CompletableFuture.allOf(p1, p2).join();

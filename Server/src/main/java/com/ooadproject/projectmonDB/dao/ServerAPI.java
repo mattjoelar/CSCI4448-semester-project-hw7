@@ -14,7 +14,18 @@ import static java.sql.DriverManager.println;
 
 
 @Service
-public class MatchDao {
+public class ServerAPI {
+
+    private static ServerAPI instance;
+
+    private ServerAPI(){}
+
+    public static synchronized ServerAPI getInstance() {
+        if (instance == null) {
+            instance = new ServerAPI();
+        }
+        return instance;
+    }
 
     public static int numOfPlayers = 0;
     SpringAsyncConfig ExecutorMaker = new SpringAsyncConfig();
