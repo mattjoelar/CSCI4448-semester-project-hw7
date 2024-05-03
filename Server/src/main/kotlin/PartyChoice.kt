@@ -27,7 +27,7 @@ class PartyChoice(private val player1 : Player, private val partyDao: PartyDao) 
             println("There is no party in the list")
             println("Creating new random party")
             for (i in 1..5){
-                player1.projectmons[i] = ProjectmonFactory.generateNewProjectmon( getRandomProjectmonIdentifier(), 1)
+                player1.projectmons[i] = ProjectmonFactory.generateNewProjectmon( getRandomProjectmonIdentifier(), 5)
             }
 
             player1.partyName = name
