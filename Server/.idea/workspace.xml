@@ -7,11 +7,6 @@
     <list default="true" id="7b570239-53b3-46d0-9c67-222fa182d808" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Battle.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Battle.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ChooseParty.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ChooseParty.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Player.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Player.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Projectmon/GameStateUpdate.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Projectmon/Projectmon.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Projectmon/Projectmon.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Weather/WeatherThunderstorm.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Weather/WeatherThunderstorm.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/kotlin/com/ooadproject/projectmontests/ProjectmonTests.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/com/ooadproject/projectmontests/ProjectmonTests.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

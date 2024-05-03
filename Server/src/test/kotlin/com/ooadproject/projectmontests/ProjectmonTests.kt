@@ -44,6 +44,7 @@ class ProjectmonTests {
         assert(battle.useMove(player1, player2, 0).wasSuccessful)
         assert(battle.switchProjectmon(player1, 1).wasSuccessful)
 
+        val
 
 
 
