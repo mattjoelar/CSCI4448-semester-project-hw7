@@ -1,8 +1,5 @@
 package Projectmon
 
-import org.example.Creatures.ProjectmonMove
-import org.example.Creatures.ProjectmonName
-import org.example.Creatures.ProjectmonType
 import kotlin.math.pow
 import kotlin.random.Random
 
@@ -19,7 +16,7 @@ data class EntryProjectmon(
     val baseSpeed : Float,
     val speedGrowth : Pair<Float, Float>,
     val learnableMoves : Map<Int, ProjectmonMove>,
-    val evolvesAtLevelInto : Pair<Int, ProjectmonName>
+    val evolvesAtLevelInto : Pair<Int, ProjectmonIdentifier>
 ) {
     private fun generateStatIncrease(growth : Pair<Float, Float>, levels : Int) : Float {
         return levels * (growth.first + (growth.second - growth.first) * Random.nextFloat())
@@ -41,5 +38,8 @@ data class EntryProjectmon(
         // Change from MAX_VALUE to something else later
         // 100 + 10x + 2^(1+.1x)
         return if (level == 100) Int.MAX_VALUE else (100 + (10f * level) + 2f.pow(1f + level.toFloat() * 0.1f)).toInt()
+    }
+    public fun isOfType(type : ProjectmonType) : Boolean {
+        return type1 == type || type2 == type
     }
 }

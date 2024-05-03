@@ -1,4 +1,4 @@
-package org.example.Creatures
+package Projectmon
 
 enum class ProjectmonType(val value: Int) {
     MISSINGNO(-1),
@@ -15,5 +15,7 @@ enum class ProjectmonType(val value: Int) {
     FERAL(8),
     TECH(9),
     ELECTRIC(10),
-    GROUND(11)
+    PLANT(11),
+    CRINGE(12),
+    ICE(13)
 }

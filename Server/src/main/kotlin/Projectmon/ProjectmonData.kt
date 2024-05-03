@@ -1,9 +1,7 @@
-package org.example.Creatures
-
-import Projectmon.EntryProjectmon
+package Projectmon
 
 data class ProjectmonData(
-    var name: ProjectmonName = ProjectmonName.EMPTY,
+    var identifier: ProjectmonIdentifier = ProjectmonIdentifier.EMPTY,
     var level: Int = 0,
     var xp: Int = 0,
     var xpMax: Int = 0,
@@ -15,9 +13,8 @@ data class ProjectmonData(
     var pp: Array<Int> = Array<Int>(4) { 0 },
     var statusEffects: MutableList<ProjectmonStatus> = mutableListOf<ProjectmonStatus>()
 ) {
-
     fun levelUp(newLevel : Int) {
-        var entry : EntryProjectmon = Entries.getCreature(name)
+        var entry : EntryProjectmon = Entries.lookupProjectmon(identifier)
         throw Exception("Not yet implemented!")
     }
 }

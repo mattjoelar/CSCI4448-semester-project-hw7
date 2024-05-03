@@ -1,13 +1,13 @@
-package org.example.Creatures
+package Projectmon
 
-import Projectmon.EntryProjectmon
+import org.example.Arena
 import kotlin.math.max
 import kotlin.math.min
-import kotlin.random.Random
 
 class Projectmon {
-    private lateinit var baseData : ProjectmonData
-    private lateinit var currentData : ProjectmonData
+    // These shouldn't be public, but it's too annoying to not do so
+    public lateinit var baseData : ProjectmonData
+    public lateinit var currentData : ProjectmonData
 
     constructor() {
         baseData = ProjectmonData()
@@ -18,10 +18,14 @@ class Projectmon {
         currentData = data.copy();
     }
 
+    public fun getName() : String {
+        return Entries.lookupProjectmon(currentData.identifier).name
+    }
+
     // Data accessors
-    public val name : ProjectmonName
+    public val identifier : ProjectmonIdentifier
         get() {
-            return currentData.name
+            return currentData.identifier
         }
     public var health : Float
         get() {
@@ -49,8 +53,20 @@ class Projectmon {
     public fun isDead(): Boolean {
         return health == 0f
     }
+    public fun getMove(idx : Int) : ProjectmonMove {
+        return currentData.moves[idx]
+    }
     public fun getPpOfMove(idx : Int) : Int {
         return if(idx in 0..3) currentData.pp[idx] else 0
+    }
+
+    public fun useMoveAgainst(moveIdx: Int, against: Projectmon, arena : Arena) : Array<String> {
+        if(getPpOfMove(moveIdx) < 0) {
+            return arrayOf("Error: Move has no PP, this should not have been able to be called!")
+        }
+        val moveData = Entries.lookupMove(currentData.moves[moveIdx])
+
+        return moveData.use(this, against, arena)
     }
 
     // This needs to be updated to include evolutions!
@@ -60,12 +76,12 @@ class Projectmon {
             return
         }
 
-        var entry : EntryProjectmon = Entries.getCreature(baseData.name)
+        var entry : EntryProjectmon = Entries.lookupProjectmon(baseData.identifier)
 
         // Check if this projectmon needs to evolve
         baseData.level = to
         if(entry.evolvesAtLevelInto.first > 0 && entry.evolvesAtLevelInto.first <= baseData.level) {
-            baseData.name = entry.evolvesAtLevelInto.second
+            baseData.identifier = entry.evolvesAtLevelInto.second
         }
 
         // Keep track of current stats to update later

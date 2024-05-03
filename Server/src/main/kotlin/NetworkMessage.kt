@@ -11,7 +11,6 @@ class NetworkMessage {
     constructor(data : String) {
         message = data
     }
-
     public fun asMap() : Map<*, *> {
         return Gson().fromJson(message, Map::class.java)
     }
