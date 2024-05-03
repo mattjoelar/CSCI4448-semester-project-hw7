@@ -39,9 +39,9 @@ class ChooseParty(private val player1 : Player) {
         //get player choice
         val choice = 0
         if(choice <= getParties()!!.count() && choice >= 0) {
-            this.player1.setPartyIDx(choice)
+            this.player1.setActiveProjectmon(choice)
         }
-        this.player1.setPartyIDx(choice)
+        this.player1.setActiveProjectmon(choice)
         return
     }
 }

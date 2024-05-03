@@ -19,7 +19,7 @@ class WeatherThunderstorm : WeatherBase() {
             val entry : EntryProjectmon = Entries.lookupProjectmon(pjmn.identifier)
 
             if(entry.isOfType(ProjectmonType.ELECTRIC) || entry.isOfType(ProjectmonType.TECH)) {
-                ret[iterator] = "${pjmn.identifier} was energized by lightning and healed ${min(pjmn.maxhealth - pjmn.health, damage)} health!"
+                ret[iterator] = "${pjmn.identifier} was energized by lightning and healed ${min(pjmn.maxHealth - pjmn.health, damage)} health!"
                 pjmn.health += damage
             } else {
                 ret[iterator] = "${pjmn.identifier} was struck by lightning for $damage damage!"

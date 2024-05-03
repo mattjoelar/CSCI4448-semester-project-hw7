@@ -23,10 +23,6 @@ class Projectmon {
     }
 
     // Data accessors
-    public val identifier : ProjectmonIdentifier
-        get() {
-            return currentData.identifier
-        }
     public var health : Float
         get() {
             return currentData.health
@@ -34,21 +30,13 @@ class Projectmon {
         set(newHealth : Float) {
             currentData.health = min(baseData.health, max(newHealth, 0f))
         }
-    public val maxhealth : Float
+    public val identifier : ProjectmonIdentifier
+        get() {
+            return currentData.identifier
+        }
+    public val maxHealth : Float
         get() {
             return baseData.health
-        }
-    public val attack : Float
-        get() {
-            return currentData.attack
-        }
-    public val defense : Float
-        get() {
-            return currentData.defense
-        }
-    public val speed : Float
-        get() {
-            return currentData.speed
         }
     public fun isDead(): Boolean {
         return health == 0f
@@ -76,7 +64,7 @@ class Projectmon {
             return
         }
 
-        var entry : EntryProjectmon = Entries.lookupProjectmon(baseData.identifier)
+        val entry : EntryProjectmon = Entries.lookupProjectmon(baseData.identifier)
 
         // Check if this projectmon needs to evolve
         baseData.level = to
