@@ -1,4 +1,4 @@
-package org.example.Creatures
+package Projectmon
 
 import org.example.Arena
 import org.example.MoveEffects.MoveDecorator

@@ -1,8 +1,8 @@
 package org.example.MoveEffects
 
 import org.example.Arena
-import org.example.Creatures.Projectmon
-import org.example.Creatures.ProjectmonType
+import Projectmon.Projectmon
+import Projectmon.ProjectmonType
 import org.example.Weather.*
 import kotlin.random.Random
 

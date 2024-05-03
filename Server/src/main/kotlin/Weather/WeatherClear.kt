@@ -1,6 +1,6 @@
 package org.example.Weather
 
-import org.example.Creatures.Projectmon
+import Projectmon.Projectmon
 
 class WeatherClear : WeatherBase() {
     override val message : String = ""

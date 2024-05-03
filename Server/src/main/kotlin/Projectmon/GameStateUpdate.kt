@@ -1,6 +1,6 @@
 package org.example.Projectmon
 
-import org.example.Creatures.ProjectmonData
+import Projectmon.ProjectmonData
 import org.example.NetworkMessage
 
 data class GameStateUpdate(

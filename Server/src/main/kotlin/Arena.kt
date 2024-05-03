@@ -1,6 +1,6 @@
 package org.example
 
-import org.example.Creatures.Projectmon
+import Projectmon.Projectmon
 import org.example.Weather.WeatherBase
 import org.example.Weather.WeatherClear
 

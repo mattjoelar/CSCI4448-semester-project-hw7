@@ -1,4 +1,4 @@
-package org.example.Creatures
+package Projectmon
 
 enum class ProjectmonIdentifier(val value: Int) {
     MISSINGNO(-1),

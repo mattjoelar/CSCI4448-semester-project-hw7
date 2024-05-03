@@ -1,4 +1,4 @@
-package org.example.Creatures
+package Projectmon
 
 enum class ProjectmonStatus(val value: Int) {
     MISSINGNO(-1),

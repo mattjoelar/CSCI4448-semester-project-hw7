@@ -1,8 +1,5 @@
 package Projectmon
 
-import org.example.Creatures.ProjectmonMove
-import org.example.Creatures.ProjectmonIdentifier
-import org.example.Creatures.ProjectmonType
 import kotlin.math.pow
 import kotlin.random.Random
 

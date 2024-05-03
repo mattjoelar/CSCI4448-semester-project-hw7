@@ -1,6 +1,4 @@
-package org.example.Creatures
-
-import Projectmon.EntryProjectmon
+package Projectmon
 
 data class ProjectmonData(
     var identifier: ProjectmonIdentifier = ProjectmonIdentifier.EMPTY,

@@ -1,7 +1,6 @@
 package org.example.Projectmon
 
-import Projectmon.EntryProjectmon
-import org.example.Creatures.*
+import Projectmon.*
 import kotlin.random.Random
 
 /* FACTORY PATTERN

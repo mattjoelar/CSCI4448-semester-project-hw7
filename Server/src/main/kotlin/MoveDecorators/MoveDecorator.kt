@@ -1,9 +1,9 @@
 package org.example.MoveEffects
 
 import org.example.Arena
-import org.example.Creatures.Entries
-import org.example.Creatures.Projectmon
-import org.example.Creatures.ProjectmonType
+import Projectmon.Entries
+import Projectmon.Projectmon
+import Projectmon.ProjectmonType
 
 open class MoveDecorator(val values: Map<String, String>) {
 

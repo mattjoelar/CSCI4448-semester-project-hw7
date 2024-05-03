@@ -1,6 +1,6 @@
 package org.example
 
-import org.example.Creatures.Projectmon
+import Projectmon.Projectmon
 
 class Player {
 

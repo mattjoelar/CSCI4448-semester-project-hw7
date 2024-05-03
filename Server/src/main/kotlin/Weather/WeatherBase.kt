@@ -1,6 +1,6 @@
 package org.example.Weather
 
-import org.example.Creatures.Projectmon
+import Projectmon.Projectmon
 
 /* STRATEGY PATTERN
 Since weather can have complex interactions on the battle depending on many external factors, it made sense

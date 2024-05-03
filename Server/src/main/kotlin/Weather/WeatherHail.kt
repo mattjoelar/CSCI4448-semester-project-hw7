@@ -1,8 +1,8 @@
 package org.example.Weather
 
-import org.example.Creatures.Entries
-import org.example.Creatures.Projectmon
-import org.example.Creatures.ProjectmonType
+import Projectmon.Entries
+import Projectmon.Projectmon
+import Projectmon.ProjectmonType
 import kotlin.random.Random
 
 class WeatherHail : WeatherBase() {

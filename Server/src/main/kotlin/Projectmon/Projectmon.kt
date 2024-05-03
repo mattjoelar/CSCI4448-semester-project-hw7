@@ -1,6 +1,5 @@
-package org.example.Creatures
+package Projectmon
 
-import Projectmon.EntryProjectmon
 import org.example.Arena
 import kotlin.math.max
 import kotlin.math.min

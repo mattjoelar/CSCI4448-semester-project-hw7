@@ -1,6 +1,6 @@
 package org.example.Weather
 
-import org.example.Creatures.Projectmon
+import Projectmon.Projectmon
 import kotlin.random.Random
 
 class WeatherHurricane : WeatherBase() {

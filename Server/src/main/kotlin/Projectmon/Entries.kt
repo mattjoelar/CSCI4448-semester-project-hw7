@@ -1,12 +1,10 @@
-package org.example.Creatures
+package Projectmon
 
-import Projectmon.EntryProjectmon
 import org.example.MoveEffects.MoveDecorator
 import org.example.MoveEffects.DamageDecorator
+import org.example.MoveEffects.StatusDecorator
+import org.example.MoveEffects.WeatherDecorator
 
-/* SINGLETON PATTERN
-
- */
 object Entries {
     // creatureEntries maps CreatureNames to CreatureEntries and contains the values for all creatures.
     private val projectmonEntries : Map<ProjectmonIdentifier, EntryProjectmon> = mapOf(
@@ -27,7 +25,6 @@ object Entries {
             ),
             Pair(-1, ProjectmonIdentifier.MISSINGNO)
         ),
-
         ProjectmonIdentifier.EMPTY to EntryProjectmon(
             "",
             ProjectmonType.EMPTY,
@@ -43,7 +40,6 @@ object Entries {
             mapOf(),
             Pair(-1, ProjectmonIdentifier.MISSINGNO)
         ),
-
         ProjectmonIdentifier.PIKAMAN to EntryProjectmon(
             "Pikaman",
             ProjectmonType.ELECTRIC,
@@ -65,6 +61,7 @@ object Entries {
             Pair(-1, ProjectmonIdentifier.MISSINGNO)
         )
     )
+
 
     private val moveEntries : Map<ProjectmonMove, EntryMove> = mapOf(
         ProjectmonMove.MISSINGNO to EntryMove(
@@ -94,10 +91,49 @@ object Entries {
             ProjectmonType.FERAL,
             20,
             arrayOf<MoveDecorator>(
-
+                DamageDecorator(
+                    mapOf<String, String>("power" to "5")
+                )
+            )
+        ),
+        ProjectmonMove.FLAMETHROWER to EntryMove(
+            "Flamethrower",
+            ProjectmonType.FIRE,
+            10,
+            arrayOf<MoveDecorator>(
+                DamageDecorator(
+                    mapOf<String, String>("power" to "5", "accuracy" to "75")
+                ),
+                StatusDecorator(
+                    mapOf<String, String>("status" to "${ProjectmonStatus.BURN.value}", "accuracy" to "33")
+                )
+            )
+        ),
+        ProjectmonMove.FLYING_KNEE to EntryMove(
+            "Flying Knee",
+            ProjectmonType.LIGHT,
+            1,
+            arrayOf<MoveDecorator>(
+                DamageDecorator(
+                    mapOf<String, String>("power" to "1000", "accuracy" to "50")
+                ),
+                StatusDecorator(
+                    mapOf<String, String>("status" to "${ProjectmonStatus.PARALYZE.value}")
+                )
+            )
+        ),
+        ProjectmonMove.THUNDER_DANCE to EntryMove(
+            "Thunder Dance",
+            ProjectmonType.MAGIC,
+            3,
+            arrayOf<MoveDecorator>(
+                WeatherDecorator(
+                    mapOf<String, String>("weather" to "thunderstorm", "accuracy" to "90")
+                )
             )
         )
     )
+
 
     // Returns a valid projectmon if id exists, otherwise returns MissingNo
     public fun lookupProjectmon(value: ProjectmonIdentifier) : EntryProjectmon {

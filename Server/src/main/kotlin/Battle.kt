@@ -1,7 +1,7 @@
 package org.example
 
-import org.example.Creatures.Entries
-import org.example.Creatures.ProjectmonData
+import Projectmon.Entries
+import Projectmon.ProjectmonData
 
 class Battle(private val player1 : Player, private val player2 : Player) {
 

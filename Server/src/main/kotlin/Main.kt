@@ -1,8 +1,7 @@
 package org.example
 
-import org.example.Creatures.ProjectmonIdentifier
+import Projectmon.ProjectmonIdentifier
 import org.example.Projectmon.ProjectmonFactory
-import java.awt.Choice
 
 fun main() {
     val player1 = Player()
