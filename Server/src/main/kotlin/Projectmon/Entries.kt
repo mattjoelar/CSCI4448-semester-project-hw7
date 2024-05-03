@@ -1,7 +1,6 @@
 package org.example.Creatures
 
 import Projectmon.EntryProjectmon
-import org.example.MoveEffects.MoveData
 import org.example.MoveEffects.MoveDecorator
 import org.example.MoveEffects.DamageDecorator
 

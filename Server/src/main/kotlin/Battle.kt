@@ -42,7 +42,7 @@ class Battle(private val player1 : Player, private val player2 : Player) {
                             idx -> if(idx in 0..3 && player.getActiveProjectmon().getPpOfMove(idx) > 0) {
                                 println("It's player ${turn + 1}'s turn!")
                                 val originalHealth = otherPlayer.getActiveProjectmon().health
-                                player.getActiveProjectmon().useMoveAgainst(idx, otherPlayer.getActiveProjectmon())
+                                player.getActiveProjectmon().useMoveAgainst(idx, otherPlayer.getActiveProjectmon(), arena)
                                 println("${Entries.lookupProjectmon(player.getActiveProjectmon().identifier).name} used ${Entries.lookupMove(player.getActiveProjectmon().getMove(idx)).name} and dealt ${originalHealth - otherPlayer.getActiveProjectmon().health} damage, leaving its opponent at ${otherPlayer.getActiveProjectmon().health}!")
                                 success = true
                             } else {
