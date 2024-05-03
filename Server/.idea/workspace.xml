@@ -6,8 +6,26 @@
   <component name="ChangeListManager">
     <list default="true" id="7b570239-53b3-46d0-9c67-222fa182d808" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Projectmon/Entries.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Projectmon/Entries.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Projectmon/ProjectmonCalculator.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/com/ooadproject/projectmontests/ProjectmonTests.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/com/ooadproject/projectmontests/ProjectmonTests.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ws-tutorial/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ws-tutorial/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ws-tutorial/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ws-tutorial/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ws-tutorial/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ws-tutorial/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ws-tutorial/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ws-tutorial/src/main/java/com/websocketTest/wstutorial/MessageController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ws-tutorial/src/main/java/com/websocketTest/wstutorial/UserHandshakeHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ws-tutorial/src/main/java/com/websocketTest/wstutorial/WebSocketConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ws-tutorial/src/main/java/com/websocketTest/wstutorial/WebSocketController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ws-tutorial/src/main/java/com/websocketTest/wstutorial/WebSocketService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ws-tutorial/src/main/java/com/websocketTest/wstutorial/WsTutorialApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ws-tutorial/src/main/java/com/websocketTest/wstutorial/dto/Message.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ws-tutorial/src/main/java/com/websocketTest/wstutorial/dto/ResponseMessage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ws-tutorial/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ws-tutorial/src/main/resources/static/Index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ws-tutorial/src/main/resources/static/scripts.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ws-tutorial/src/test/java/com/websocketTest/wstutorial/WsTutorialApplicationTests.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,7 +203,7 @@
     <servers />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/MCClient$ProjectmonTests.ic" NAME="ProjectmonTests Coverage Results" MODIFIED="1714710968238" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/MCClient$ProjectmonTests.ic" NAME="ProjectmonTests Coverage Results" MODIFIED="1714720473109" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/MCClient$Tests_in__MCClient_test_.ic" NAME="Tests in 'MCClient.test' Coverage Results" MODIFIED="1714709343580" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
