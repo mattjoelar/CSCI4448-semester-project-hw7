@@ -7,7 +7,7 @@ import org.example.MoveEffects.WeatherDecorator
 
 object Entries {
     // creatureEntries maps CreatureNames to CreatureEntries and contains the values for all creatures.
-    private val projectmonEntries : Map<ProjectmonIdentifier, EntryProjectmon> = mapOf(
+    private val projectmonEntries: Map<ProjectmonIdentifier, EntryProjectmon> = mapOf(
         ProjectmonIdentifier.MISSINGNO to EntryProjectmon(
             "MissingNo",
             ProjectmonType.EMPTY,
@@ -15,11 +15,11 @@ object Entries {
             1f,
             Pair(0f, 1f),
             1f,
-            Pair(0f,0f),
+            Pair(0f, 0f),
             1f,
-            Pair(0f,0f),
+            Pair(0f, 0f),
             1f,
-            Pair(0f,0f),
+            Pair(0f, 0f),
             mapOf(
                 1 to ProjectmonMove.TICKLE
             ),
@@ -32,11 +32,11 @@ object Entries {
             0f,
             Pair(0f, 0f),
             0f,
-            Pair(0f,0f),
+            Pair(0f, 0f),
             0f,
-            Pair(0f,0f),
+            Pair(0f, 0f),
             0f,
-            Pair(0f,0f),
+            Pair(0f, 0f),
             mapOf(),
             Pair(-1, ProjectmonIdentifier.MISSINGNO)
         ),
@@ -59,8 +59,73 @@ object Entries {
                 15 to ProjectmonMove.FLYING_KNEE
             ),
             Pair(-1, ProjectmonIdentifier.MISSINGNO)
+        ),
+
+        ProjectmonIdentifier . BIG_JOHN to EntryProjectmon (
+            "BIG JOHN",
+            ProjectmonType.ELECTRIC,
+            ProjectmonType.FERAL,
+            5f,
+            Pair(0f, 1f),
+            5f,
+            Pair(0f, 1f),
+            5f,
+            Pair(0f, 1f),
+            5f,
+            Pair(0f, 1f),
+            mapOf(
+                1 to ProjectmonMove.TICKLE,
+                5 to ProjectmonMove.SCRATCH,
+                10 to ProjectmonMove.FLAMETHROWER,
+                15 to ProjectmonMove.FLYING_KNEE
+            ),
+            Pair(-1, ProjectmonIdentifier.MISSINGNO)
+        ),
+
+        ProjectmonIdentifier . FRIBIAN to EntryProjectmon (
+            "Fribian",
+            ProjectmonType.ELECTRIC,
+            ProjectmonType.FERAL,
+            5f,
+            Pair(0f, 1f),
+            5f,
+            Pair(0f, 1f),
+            5f,
+            Pair(0f, 1f),
+            5f,
+            Pair(0f, 1f),
+            mapOf(
+                1 to ProjectmonMove.TICKLE,
+                5 to ProjectmonMove.SCRATCH,
+                10 to ProjectmonMove.FLAMETHROWER,
+                15 to ProjectmonMove.FLYING_KNEE
+            ),
+            Pair(-1, ProjectmonIdentifier.MISSINGNO)
+        ),
+
+        ProjectmonIdentifier . PUPMUTT to EntryProjectmon (
+            "PupMutt",
+            ProjectmonType.ELECTRIC,
+            ProjectmonType.FERAL,
+            5f,
+            Pair(0f, 1f),
+            5f,
+            Pair(0f, 1f),
+            5f,
+            Pair(0f, 1f),
+            5f,
+            Pair(0f, 1f),
+            mapOf(
+                1 to ProjectmonMove.TICKLE,
+                5 to ProjectmonMove.SCRATCH,
+                10 to ProjectmonMove.FLAMETHROWER,
+                15 to ProjectmonMove.FLYING_KNEE
+            ),
+            Pair(-1, ProjectmonIdentifier.MISSINGNO)
         )
     )
+
+
 
 
     private val moveEntries : Map<ProjectmonMove, EntryMove> = mapOf(

@@ -1,6 +1,9 @@
 package org.example.Projectmon
 
 import Projectmon.*
+import Projectmon.ProjectmonMove.Companion.getIdentifier
+import com.ooadproject.projectmonDB.model.Creature
+import com.ooadproject.projectmonDB.model.Move
 import kotlin.random.Random
 
 /* FACTORY PATTERN
@@ -31,14 +34,14 @@ class ProjectmonFactory {
             while(validMoves.size > 0 && learnedMoves < 4) {
                 //println("on $name size is ${validMoves.size}")
                 //println("selected index is $number")
-                val number = Random.nextInt(validMoves.size)
-                val randomMove = validMoves[Random.nextInt(validMoves.size)]
+//                val number = Random.nextInt(validMoves.size)
+                val randomMove = validMoves[Random.nextInt(0,validMoves.size)]
                 moves[learnedMoves] = randomMove
                 pp[learnedMoves] = Entries.lookupMove(randomMove).pp
 
                 println("Setting $name's move $learnedMoves to $randomMove with ${pp[learnedMoves]} pp.")
                 validMoves.remove(randomMove)
-                learnedMoves++
+                learnedMoves = learnedMoves + 1
                 //println("size is now ${validMoves.size}")
             }
             /*for (i in 0..min(entry.learnableMoves.size - 1, 3)) {
@@ -68,6 +71,31 @@ class ProjectmonFactory {
             )
 
             return Projectmon(instanceData)
+        }
+
+        fun createFromDb(creature: Creature): Projectmon {
+            val moves = getMoves(creature)
+            val projectmon = Projectmon()
+            projectmon.baseData.identifier = ProjectmonIdentifier.getIdentifier(creature.id)
+            projectmon.baseData.level = creature.level
+            projectmon.baseData.xp = creature.xp
+            projectmon.baseData.xpMax =creature.xp_max
+            projectmon.baseData.health = creature.hp
+            projectmon.baseData.attack = creature.attack
+            projectmon.baseData.defense = creature.defense
+            projectmon.baseData.speed = creature.speed
+            for(i in 0..getMoves(creature).size) {
+                val move = getIdentifier(moves[i].identifier)
+                projectmon.baseData.moves[i] = move
+                projectmon.baseData.pp[i] = (Entries.lookupMove(move)).pp
+            }
+
+
+            return projectmon
+        }
+
+        private fun getMoves(creature: Creature?): List<Move> {
+            return creature!!.moves
         }
     }
 }

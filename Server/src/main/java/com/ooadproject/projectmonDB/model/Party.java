@@ -1,6 +1,5 @@
 package com.ooadproject.projectmonDB.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import org.jetbrains.annotations.NotNull;
@@ -17,13 +16,14 @@ public class Party {
 
     @NotNull
     @Column(name="party_name")
-    private String party_name;
+    private String name;
 
     @NotNull
     @OneToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY , orphanRemoval = true)
     @JoinColumn(name = "fk_party_id", referencedColumnName = "party_id")
+//    @JsonIgnore
     @JsonManagedReference
-    private List<Creature> creatures;
+    private List<Creature> creatures = new ArrayList<>();
 
 //-------------- Getters & Setters --------------//
 
@@ -32,17 +32,17 @@ public class Party {
         return creatures;
     }
 
-    public void setCreatures(@NotNull List<Creature> monID) {
-        this.creatures = monID;
+    public void setCreatures(@NotNull List<Creature> creature) {
+        this.creatures = creature;
     }
 
     @NotNull
-    public String getParty_name() {
-        return party_name;
+    public String getName() {
+        return name;
     }
 
-    public void setParty_name(@NotNull String partyName) {
-        this.party_name = partyName;
+    public void setName(@NotNull String partyName) {
+        this.name = partyName;
     }
 
     public int getParty_id() {
@@ -61,8 +61,8 @@ public class Party {
     public String toString() {
         return "Party{" +
                 "party_id=" + party_id +
-                ", partyName='" + party_name + '\'' +
-                ", monID=" + creatures +
+                ", name='" + name + '\'' +
+                ", creatures=" + creatures +
                 '}';
     }
 }

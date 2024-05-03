@@ -5,7 +5,6 @@ import com.ooadproject.projectmonDB.repository.CreatureRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +24,10 @@ public class CreatureDao {
         return creatures;
     }
 
+
+    public Creature getCreatureById(int id) {
+        return repository.findById(id).orElse(null);
+    }
 
     public void deleteCreature(Creature creature) { repository.delete(creature); }
 

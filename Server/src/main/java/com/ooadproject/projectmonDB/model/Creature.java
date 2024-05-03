@@ -5,6 +5,9 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Entity
 @Table(name="creature")
@@ -38,8 +41,15 @@ public class Creature {
     @Column(name = "speed", nullable = false)
     private float speed;
 
-    @Column(name = "moves", nullable = false)
-    private int moves;
+
+    @NotNull
+    @ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
+    @JoinTable(name = "creature_move",
+            joinColumns = @JoinColumn(name = "creature_id"),
+            inverseJoinColumns = @JoinColumn(name = "move_id"))
+//    @JsonIgnore
+    @JsonManagedReference
+    private List<Move> moves = new ArrayList<>();
 
     @NotNull
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -57,53 +67,29 @@ public class Creature {
         this.id = id;
     }
 
-
-    public int getMoves() {
+    @NotNull
+    public List<Move> getMoves() {
         return moves;
     }
 
-    public void setMoves(int movesID) {
-        this.moves = movesID;
+    public void setMoves(@NotNull List<Move> moves) {
+        this.moves = moves;
     }
 
-    public float getSpeed() {
-        return speed;
+    public int getIdentifier() {
+        return identifier;
     }
 
-    public void setSpeed(float speed) {
-        this.speed = speed;
+    public void setIdentifier(int identifier) {
+        this.identifier = identifier;
     }
 
-    public float getDefense() {
-        return defense;
+    public int getLevel() {
+        return level;
     }
 
-    public void setDefense(float defense) {
-        this.defense = defense;
-    }
-
-    public float getAttack() {
-        return attack;
-    }
-
-    public void setAttack(float attack) {
-        this.attack = attack;
-    }
-
-    public float getHp() {
-        return hp;
-    }
-
-    public void setHp(float hp) {
-        this.hp = hp;
-    }
-
-    public int getXp_max() {
-        return xp_max;
-    }
-
-    public void setXp_max(int pxMax) {
-        this.xp_max = pxMax;
+    public void setLevel(int level) {
+        this.level = level;
     }
 
     public int getXp() {
@@ -114,12 +100,44 @@ public class Creature {
         this.xp = xp;
     }
 
-    public int getLevel() {
-        return level;
+    public int getXp_max() {
+        return xp_max;
     }
 
-    public void setLevel(int level) {
-        this.level = level;
+    public void setXp_max(int xp_max) {
+        this.xp_max = xp_max;
+    }
+
+    public float getHp() {
+        return hp;
+    }
+
+    public void setHp(float hp) {
+        this.hp = hp;
+    }
+
+    public float getAttack() {
+        return attack;
+    }
+
+    public void setAttack(float attack) {
+        this.attack = attack;
+    }
+
+    public float getDefense() {
+        return defense;
+    }
+
+    public void setDefense(float defense) {
+        this.defense = defense;
+    }
+
+    public float getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(float speed) {
+        this.speed = speed;
     }
 
     @NotNull
@@ -131,16 +149,7 @@ public class Creature {
         this.party = party;
     }
 
-
-    public int getIdentifier() {
-        return identifier;
-    }
-
-    public void setIdentifier( int identifier) {
-        this.identifier = identifier;
-    }
-
-//---------------- To String ----------------//
+    //---------------- To String ----------------//
 
 
     @Override
@@ -150,12 +159,12 @@ public class Creature {
                 ", identifier=" + identifier +
                 ", level=" + level +
                 ", xp=" + xp +
-                ", xpMax=" + xp_max +
+                ", xp_max=" + xp_max +
                 ", hp=" + hp +
                 ", attack=" + attack +
                 ", defense=" + defense +
                 ", speed=" + speed +
-                ", movesID=" + moves +
+                ", moves=" + moves +
                 ", party=" + party +
                 '}';
     }
